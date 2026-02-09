@@ -9,8 +9,8 @@ import GallerySection from "./components/GallerySection";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <AboutSection />
+    <Hero />
+    <AboutSection />
      <Menu/>
      <GallerySection/>
      <BookTableSection/>
