@@ -1,7 +1,9 @@
+
 // 'use client'
 
-// import { useState } from 'react'
-// import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Instagram, Facebook } from 'lucide-react'
+// import { useState, useEffect } from 'react'
+// import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Instagram, Facebook, MessageSquare } from 'lucide-react'
+// import GoogleMap from './GoogleMap'
 
 // const ContactSection = () => {
 //   const [formData, setFormData] = useState({
@@ -69,7 +71,7 @@
 
 //         <div className="grid lg:grid-cols-2 gap-16">
           
-//           {/* Left Column - Contact Info & Map */}
+//           {/* Left Column - Contact Info */}
 //           <div className="space-y-8">
 //             {/* Contact Info Cards */}
 //             <div className="grid md:grid-cols-2 gap-6">
@@ -89,9 +91,12 @@
 //                     </a>
 //                     <p className="text-gray-400">For reservations & inquiries</p>
 //                   </div>
-//                   <button className="w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all">
+//                   <a 
+//                     href="tel:03210001112"
+//                     className="block w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all text-center"
+//                   >
 //                     Call Now
-//                   </button>
+//                   </a>
 //                 </div>
 //               </div>
 
@@ -106,10 +111,20 @@
 //                     <p className="text-gray-300 mb-2">
 //                       RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
 //                     </p>
+//                     <div className="text-sm text-gray-400 space-y-1">
+//                       <p>📍 Okara, Punjab, Pakistan</p>
+//                       <p>📞 0321 0001112</p>
+//                       <p>⏰ Open: 10:00 AM - 1:00 AM</p>
+//                     </div>
 //                   </div>
-//                   <button className="w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all">
+//                   <a 
+//                     href="https://www.google.com/maps/place/RC7X%2BCW4+Tehsil+Rd,+Waris+Colony+Aamir+Colony,+Okara,+Pakistan/@30.8121,73.4515,17z"
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     className="block w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all text-center"
+//                   >
 //                     Get Directions
-//                   </button>
+//                   </a>
 //                 </div>
 //               </div>
 //             </div>
@@ -148,27 +163,30 @@
 //               <h3 className="text-2xl font-bold text-white mb-6">Connect With Us</h3>
               
 //               <div className="grid grid-cols-2 gap-4">
+//                 {/* Instagram - Updated Link */}
 //                 <a 
-//                   href="https://instagram.com/cafejanoshi" 
+//                   href="https://www.instagram.com/cafejanoshi/" 
 //                   target="_blank" 
 //                   rel="noopener noreferrer"
 //                   className="group"
 //                 >
-//                   <div className="bg-gradient-to-br from-pink-500/5 to-purple-500/5 p-6 rounded-2xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group-hover:scale-105">
+//                   <div className="bg-gradient-to-br from-pink-500/5 via-purple-500/5 to-orange-500/5 p-6 rounded-2xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group-hover:scale-105">
 //                     <div className="flex items-center gap-4">
-//                       <div className="p-3 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl">
+//                       <div className="p-3 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-orange-500/20 rounded-xl">
 //                         <Instagram className="w-6 h-6 text-pink-400" />
 //                       </div>
 //                       <div>
 //                         <div className="font-bold text-white">Instagram</div>
 //                         <div className="text-gray-400 text-sm">@cafejanoshi</div>
+//                         <div className="text-pink-300 text-xs mt-1">4K+ followers</div>
 //                       </div>
 //                     </div>
 //                   </div>
 //                 </a>
                 
+//                 {/* Facebook - Updated Link */}
 //                 <a 
-//                   href="https://facebook.com/Janoshi" 
+//                   href="https://www.facebook.com/janoshiofficial/" 
 //                   target="_blank" 
 //                   rel="noopener noreferrer"
 //                   className="group"
@@ -180,17 +198,35 @@
 //                       </div>
 //                       <div>
 //                         <div className="font-bold text-white">Facebook</div>
-//                         <div className="text-gray-400 text-sm">1.7K+ followers</div>
+//                         <div className="text-gray-400 text-sm">Janoshi Official</div>
+//                         <div className="text-blue-300 text-xs mt-1">70+ reviews</div>
 //                       </div>
 //                     </div>
 //                   </div>
 //                 </a>
 //               </div>
               
+//               {/* WhatsApp Business Link */}
 //               <div className="mt-6 pt-6 border-t border-zinc-800">
-//                 <p className="text-gray-400 text-center">
-//                   Follow us for daily updates, offers, and food photos!
-//                 </p>
+//                 <a 
+//                   href="https://wa.me/923210001112" 
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="flex items-center justify-between p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl hover:bg-gradient-to-r hover:from-green-500/20 hover:to-emerald-500/20 transition-all group"
+//                 >
+//                   <div className="flex items-center gap-4">
+//                     <div className="p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl">
+//                       <MessageSquare className="w-6 h-6 text-green-400" />
+//                     </div>
+//                     <div className="text-left">
+//                       <div className="font-bold text-white">WhatsApp Business</div>
+//                       <div className="text-gray-400 text-sm">Order directly on WhatsApp</div>
+//                     </div>
+//                   </div>
+//                   <div className="text-green-400 group-hover:translate-x-1 transition-transform">
+//                     →
+//                   </div>
+//                 </a>
 //               </div>
 //             </div>
 //           </div>
@@ -257,15 +293,15 @@
 
 //                 <div className="space-y-2">
 //                   <label className="text-gray-300 font-medium">Email Address *</label>
-//                   <input
-//                     type="email"
-//                     name="email"
-//                     value={formData.email}
-//                     onChange={handleChange}
-//                     required
-//                     className="w-full px-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-//                     placeholder="your@email.com"
-//                   />
+//                     <input
+//                       type="email"
+//                       name="email"
+//                       value={formData.email}
+//                       onChange={handleChange}
+//                       required
+//                       className="w-full px-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+//                       placeholder="your@email.com"
+//                     />
 //                 </div>
 
 //                 <div className="space-y-2">
@@ -346,33 +382,42 @@
 
 //         {/* Map Preview */}
 //         <div className="mt-24">
-//           <div className="bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 p-8">
-//             <div className="flex items-center justify-between mb-6">
-//               <h3 className="text-2xl font-bold text-white">Find Us on Map</h3>
-//               <button className="px-6 py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all">
-//                 Open in Google Maps
-//               </button>
+//           <div className="bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 p-6">
+//             <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+//               <div>
+//                 <h3 className="text-2xl font-bold text-white">📍 Our Location</h3>
+//                 <p className="text-gray-400 mt-2">
+//                   RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
+//                 </p>
+//               </div>
+//               <a 
+//                 href="https://www.google.com/maps/dir//30.8121,73.4515"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="px-6 py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all whitespace-nowrap"
+//               >
+//                 Get Directions
+//               </a>
 //             </div>
             
-//             {/* Map Placeholder */}
-//             <div className="aspect-video bg-gradient-to-br from-zinc-800/50 to-black/50 rounded-2xl overflow-hidden border border-zinc-800 relative">
-//               <div className="absolute inset-0 flex items-center justify-center">
-//                 <div className="text-center space-y-6 p-8">
-//                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-full flex items-center justify-center">
-//                     <MapPin className="w-10 h-10 text-orange-400" />
-//                   </div>
-//                   <div>
-//                     <h4 className="text-2xl font-bold text-white mb-2">Cafe Janoshi</h4>
-//                     <p className="text-gray-400">
-//                       RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
-//                     </p>
-//                   </div>
+//             {/* Google Map */}
+//             <GoogleMap />
+
+//             {/* Map Info */}
+//             <div className="mt-6 p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
+//               <div className="flex flex-wrap items-center justify-between gap-4">
+//                 <div>
+//                   <h4 className="text-white font-semibold">📍 Coordinates</h4>
+//                   <p className="text-gray-400 text-sm">30.8121° N, 73.4515° E</p>
 //                 </div>
-//               </div>
-              
-//               {/* Map Coordinates */}
-//               <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-zinc-800">
-//                 <span className="text-gray-300 text-sm">31.9784° N, 73.1084° E</span>
+//                 <div>
+//                   <h4 className="text-white font-semibold">🚗 Parking</h4>
+//                   <p className="text-gray-400 text-sm">Available</p>
+//                 </div>
+//                 <div>
+//                   <h4 className="text-white font-semibold">⏰ Distance</h4>
+//                   <p className="text-gray-400 text-sm">5 min from Okara Center</p>
+//                 </div>
 //               </div>
 //             </div>
 //           </div>
@@ -382,7 +427,8 @@
 //   )
 // }
 
-// export default ContactSection  
+// export default ContactSection 
+
 
 
 
@@ -392,9 +438,9 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Instagram, Facebook } from 'lucide-react'
-import GoogleMap from './GoogleMap' // <-- YEH IMPORT ADD KARNA
+import { useState } from 'react'
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Instagram, Facebook, MessageSquare } from 'lucide-react'
+import GoogleMap from './GoogleMap'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -407,22 +453,6 @@ const ContactSection = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isMapLoaded, setIsMapLoaded] = useState(false) // <-- Map load state
-
-  useEffect(() => {
-    // Google Maps script load karo
-    if (document.querySelector('#google-maps-script')) return
-
-    const script = document.createElement('script')
-    script.id = 'google-maps-script'
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`
-    script.async = true
-    script.defer = true
-    script.onload = () => {
-      setIsMapLoaded(true)
-    }
-    document.head.appendChild(script)
-  }, [])
 
   const handleChange = (e) => {
     setFormData({
@@ -478,7 +508,7 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-16">
           
-          {/* Left Column - Contact Info & Map */}
+          {/* Left Column - Contact Info */}
           <div className="space-y-8">
             {/* Contact Info Cards */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -498,9 +528,12 @@ const ContactSection = () => {
                     </a>
                     <p className="text-gray-400">For reservations & inquiries</p>
                   </div>
-                  <button className="w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all">
+                  <a 
+                    href="tel:03210001112"
+                    className="block w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all text-center"
+                  >
                     Call Now
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -515,10 +548,20 @@ const ContactSection = () => {
                     <p className="text-gray-300 mb-2">
                       RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
                     </p>
+                    <div className="text-sm text-gray-400 space-y-1">
+                      <p>📍 Okara, Punjab, Pakistan</p>
+                      <p>📞 0321 0001112</p>
+                      <p>⏰ Open: 10:00 AM - 1:00 AM</p>
+                    </div>
                   </div>
-                  <button className="w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all">
+                  <a 
+                    href="https://www.google.com/maps/place/RC7X%2BCW4+Tehsil+Rd,+Waris+Colony+Aamir+Colony,+Okara,+Pakistan/@30.8121,73.4515,17z"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full py-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-400 rounded-xl font-medium hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 transition-all text-center"
+                  >
                     Get Directions
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -557,27 +600,30 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Connect With Us</h3>
               
               <div className="grid grid-cols-2 gap-4">
+                {/* Instagram */}
                 <a 
-                  href="https://instagram.com/cafejanoshi" 
+                  href="https://www.instagram.com/cafejanoshi/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  <div className="bg-gradient-to-br from-pink-500/5 to-purple-500/5 p-6 rounded-2xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group-hover:scale-105">
+                  <div className="bg-gradient-to-br from-pink-500/5 via-purple-500/5 to-orange-500/5 p-6 rounded-2xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group-hover:scale-105">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl">
+                      <div className="p-3 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-orange-500/20 rounded-xl">
                         <Instagram className="w-6 h-6 text-pink-400" />
                       </div>
                       <div>
                         <div className="font-bold text-white">Instagram</div>
                         <div className="text-gray-400 text-sm">@cafejanoshi</div>
+                        <div className="text-pink-300 text-xs mt-1">4K+ followers</div>
                       </div>
                     </div>
                   </div>
                 </a>
                 
+                {/* Facebook */}
                 <a 
-                  href="https://facebook.com/Janoshi" 
+                  href="https://www.facebook.com/janoshiofficial/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group"
@@ -589,17 +635,35 @@ const ContactSection = () => {
                       </div>
                       <div>
                         <div className="font-bold text-white">Facebook</div>
-                        <div className="text-gray-400 text-sm">1.7K+ followers</div>
+                        <div className="text-gray-400 text-sm">Janoshi Official</div>
+                        <div className="text-blue-300 text-xs mt-1">70+ reviews</div>
                       </div>
                     </div>
                   </div>
                 </a>
               </div>
               
+              {/* WhatsApp */}
               <div className="mt-6 pt-6 border-t border-zinc-800">
-                <p className="text-gray-400 text-center">
-                  Follow us for daily updates, offers, and food photos!
-                </p>
+                <a 
+                  href="https://wa.me/923210001112" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl hover:bg-gradient-to-r hover:from-green-500/20 hover:to-emerald-500/20 transition-all group"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl">
+                      <MessageSquare className="w-6 h-6 text-green-400" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-bold text-white">WhatsApp Business</div>
+                      <div className="text-gray-400 text-sm">Order directly on WhatsApp</div>
+                    </div>
+                  </div>
+                  <div className="text-green-400 group-hover:translate-x-1 transition-transform">
+                    →
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -666,15 +730,15 @@ const ContactSection = () => {
 
                 <div className="space-y-2">
                   <label className="text-gray-300 font-medium">Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-                    placeholder="your@email.com"
-                  />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                      placeholder="your@email.com"
+                    />
                 </div>
 
                 <div className="space-y-2">
@@ -774,18 +838,7 @@ const ContactSection = () => {
             </div>
             
             {/* Google Map */}
-            <div className="relative rounded-2xl overflow-hidden">
-              {isMapLoaded ? (
-                <GoogleMap />
-              ) : (
-                <div className="h-[400px] bg-gradient-to-br from-zinc-800/50 to-black/50 rounded-2xl flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 mx-auto border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin"></div>
-                    <p className="text-gray-400">Loading map...</p>
-                  </div>
-                </div>
-              )}
-            </div>
+            <GoogleMap />
 
             {/* Map Info */}
             <div className="mt-6 p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
