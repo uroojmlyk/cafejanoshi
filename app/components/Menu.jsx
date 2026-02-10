@@ -721,9 +721,9 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Margaritas',
     icon: '🍹',
     items: [
-      { id: 'mint-margarita', name: 'Mint Margarita', price: 349, description: 'Refreshing mint margarita', image: '/mint-margarita.jpg' },
-      { id: 'blueberry-margarita', name: 'Blue Berry Margarita', price: 449, description: 'Sweet blueberry margarita', image: '/blueberry-margarita.jpg' },
-      { id: 'strawberry-margarita', name: 'Strawberry Margarita', price: 449, description: 'Fresh strawberry blend', image: '/strawberry-margarita.jpg' },
+      { id: 'mint-margarita', name: 'Mint Margarita', price: 349, description: 'Refreshing mint margarita', image: '/mintmargarita.jpg' },
+      { id: 'blueberry-margarita', name: 'Blue Berry Margarita', price: 449, description: 'Sweet blueberry margarita', image: '/blueberrymargarita.jpg' },
+      { id: 'strawberry-margarita', name: 'Strawberry Margarita', price: 449, description: 'Fresh strawberry blend', image: '/strawberrymargarita.jpg' },
     ]
   },
   {
@@ -732,12 +732,12 @@ const COMPLETE_MENU_CATEGORIES = [
     icon: '❄️',
     items: [
       { id: 'frappuccino', name: 'Frappuccino', price: 699, description: 'Blended ice coffee', image: '/frappuccino.jpg' },
-      { id: 'cafe-latte-iced', name: 'Cafe Latte', price: 699, description: 'Iced latte', image: '/cafe-latte.jpg' },
-      { id: 'pistacio-latte', name: 'Pistacio Latte', price: 699, description: 'Pistachio flavored latte', image: '/pistachio-latte.jpg' },
-      { id: 'nutella-latte', name: 'Nutella Latte', price: 699, description: 'Nutella coffee delight', image: '/nutella-latte.jpg' },
-      { id: 'lotus-latte', name: 'Lotus Latte', price: 699, description: 'Biscoff lotus latte', image: '/lotus-latte.jpg' },
-      { id: 'strawberry-latte', name: 'Strawberry Latte', price: 699, description: 'Strawberry flavored latte', image: '/strawberry-latte.jpg' },
-      { id: 'blueberry-latte', name: 'Blue Berry Latte', price: 699, description: 'Blueberry coffee blend', image: '/blueberry-latte.jpg' },
+      { id: 'cafe-latte-iced', name: 'Cafe Latte', price: 699, description: 'Iced latte', image: '/icedlatte.jpg' },
+      { id: 'pistacio-latte', name: 'Pistacio Latte', price: 699, description: 'Pistachio flavored latte', image: '/pistaciolatte.jpg' },
+      { id: 'nutella-latte', name: 'Nutella Latte', price: 699, description: 'Nutella coffee delight', image: '/nutellalatte.jpg' },
+      { id: 'lotus-latte', name: 'Lotus Latte', price: 699, description: 'Biscoff lotus latte', image: '/lotuslatte.jpg' },
+      { id: 'strawberry-latte', name: 'Strawberry Latte', price: 699, description: 'Strawberry flavored latte', image: '/strawberrylatte.jpg' },
+      { id: 'blueberry-latte', name: 'Blue Berry Latte', price: 699, description: 'Blueberry coffee blend', image: '/blueberrylatte.jpg' },
     ]
   },
   {
@@ -834,20 +834,20 @@ const COMPLETE_MENU_CATEGORIES = [
       { id: 'napolean-chicken', name: 'Napolean Chicken', price: 1899, description: 'Layered chicken dish', image: '/napoleanchicken.jpg' },
     ]
   },
-  {
-    id: 'addons',
-    name: 'Add-ons',
-    icon: '➕',
-    items: [
-      { id: 'mash-potato', name: 'Mash Potato', price: 199, description: 'Creamy mashed potatoes', image: '/mash-potato.jpg' },
-      { id: 'baked-potato', name: 'Baked Potato', price: 199, description: 'Baked potato', image: '/baked-potato.jpg' },
-      { id: 'sauteed-vegetables', name: 'Sauteed Vegetables', price: 199, description: 'Fresh sautéed veggies', image: '/sauteed-vegetables.jpg' },
-      { id: 'fries', name: 'Fries', price: 199, description: 'Crispy french fries', image: '/fries.jpg' },
-      { id: 'cream-spinach', name: 'Cream Spinach', price: 199, description: 'Creamy spinach', image: '/cream-spinach.jpg' },
-      { id: 'caramelized-onion', name: 'Caramelized Onion', price: 199, description: 'Sweet caramelized onions', image: '/caramelized-onion.jpg' },
-      { id: 'potato-wedges', name: 'Potato Wedges', price: 199, description: 'Seasoned potato wedges', image: '/potato-wedges.jpg' },
-    ]
-  },
+  // {
+  //   id: 'addons',
+  //   name: 'Add-ons',
+  //   icon: '➕',
+  //   items: [
+  //     { id: 'mash-potato', name: 'Mash Potato', price: 199, description: 'Creamy mashed potatoes', image: '/mash-potato.jpg' },
+  //     { id: 'baked-potato', name: 'Baked Potato', price: 199, description: 'Baked potato', image: '/baked-potato.jpg' },
+  //     { id: 'sauteed-vegetables', name: 'Sauteed Vegetables', price: 199, description: 'Fresh sautéed veggies', image: '/sauteed-vegetables.jpg' },
+  //     { id: 'fries', name: 'Fries', price: 199, description: 'Crispy french fries', image: '/fries.jpg' },
+  //     { id: 'cream-spinach', name: 'Cream Spinach', price: 199, description: 'Creamy spinach', image: '/cream-spinach.jpg' },
+  //     { id: 'caramelized-onion', name: 'Caramelized Onion', price: 199, description: 'Sweet caramelized onions', image: '/caramelized-onion.jpg' },
+  //     { id: 'potato-wedges', name: 'Potato Wedges', price: 199, description: 'Seasoned potato wedges', image: '/potato-wedges.jpg' },
+  //   ]
+  // },
   {
     id: 'steaks',
     name: 'Premium Steaks',
@@ -912,9 +912,9 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Crispy Broast',
     icon: '🍗',
     items: [
-      { id: 'broast-quarter-small', name: 'Broast Quarter (Small)', price: 799, description: 'Crispy quarter broast', image: '/broast-quarter.jpg' },
-      { id: 'broast-half-medium', name: 'Broast Half (Medium)', price: 1299, description: 'Crispy half broast', image: '/broast-half.jpg' },
-      { id: 'broast-full-large', name: 'Broast Full (Large)', price: 2399, description: 'Crispy full broast', image: '/broast-full.jpg' },
+      { id: 'broast-quarter-small', name: 'Broast Quarter (Small)', price: 799, description: 'Crispy quarter broast', image: '/broast.jpg' },
+      { id: 'broast-half-medium', name: 'Broast Half (Medium)', price: 1299, description: 'Crispy half broast', image: '/broast.jpg' },
+      { id: 'broast-full-large', name: 'Broast Full (Large)', price: 2399, description: 'Crispy full broast', image: '/broast.jpg' },
     ]
   },
   {
@@ -945,14 +945,14 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Pasta & Noodles',
     icon: '🍝',
     items: [
-      { id: 'fettuccine-pasta', name: 'Fettuccine Pasta', price: 1099, description: 'Fettuccine pasta', image: '/fettuccine-pasta.jpg' },
-      { id: 'fried-chicken-pasta', name: 'Fried Chicken Pasta', price: 1149, description: 'Pasta with fried chicken', image: '/fried-chicken-pasta.jpg' },
-      { id: 'jn-special-italian-pasta', name: 'JN Special Italian Pasta', price: 1199, description: 'Special Italian pasta', image: '/jn-italian-pasta.jpg' },
-      { id: 'penne-pasta', name: 'Penne Pasta', price: 1149, description: 'Penne pasta', image: '/penne-pasta.jpg' },
-      { id: 'bake-cheese-pasta', name: 'Bake Cheese Pasta', price: 1099, description: 'Baked cheese pasta', image: '/bake-cheese-pasta.jpg' },
-      { id: 'bake-pasta-with-fries', name: 'Bake Pasta with Fries', price: 999, description: 'Pasta with fries', image: '/bake-pasta-fries.jpg' },
-      { id: 'dragon-noodles', name: 'Dragon Noodles', price: 1299, description: 'Spicy dragon noodles', image: '/dragon-noodles.jpg' },
-      { id: 'mexican-noodles', name: 'Mexican Noodles', price: 1299, description: 'Mexican style noodles', image: '/mexican-noodles.jpg' },
+      { id: 'fettuccine-pasta', name: 'Fettuccine Pasta', price: 1099, description: 'Fettuccine pasta', image: '/fettuccinepasta.jpg' },
+      { id: 'fried-chicken-pasta', name: 'Fried Chicken Pasta', price: 1149, description: 'Pasta with fried chicken', image: '/friedchickenpasta.jpg' },
+      { id: 'jn-special-italian-pasta', name: 'JN Special Italian Pasta', price: 1199, description: 'Special Italian pasta', image: '/jnspecialitalianpasta.jpg' },
+      { id: 'penne-pasta', name: 'Penne Pasta', price: 1149, description: 'Penne pasta', image: '/pennypasta.jpg' },
+      { id: 'bake-cheese-pasta', name: 'Bake Cheese Pasta', price: 1099, description: 'Baked cheese pasta', image: '/bakecheesepasta.jpg' },
+      { id: 'bake-pasta-with-fries', name: 'Bake Pasta with Fries', price: 999, description: 'Pasta with fries', image: '/bakepastawithfries.jpg' },
+      { id: 'dragon-noodles', name: 'Dragon Noodles', price: 1299, description: 'Spicy dragon noodles', image: '/dragonnoddles.jpg' },
+      { id: 'mexican-noodles', name: 'Mexican Noodles', price: 1299, description: 'Mexican style noodles', image: '/mexicannoddles.jpg' },
     ]
   },
   {
@@ -960,17 +960,17 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Hot Soups',
     icon: '🥣',
     items: [
-      { id: 'special-soup-small', name: 'Special Soup (Small)', price: 549, description: 'House special soup', image: '/special-soup.jpg' },
-      { id: 'special-soup-large', name: 'Special Soup (Large)', price: 1599, description: 'House special soup', image: '/special-soup.jpg' },
-      { id: 'soup-19b-small', name: '19B Soup (Small)', price: 599, description: 'Special 19B soup', image: '/19b-soup.jpg' },
-      { id: 'soup-19b-large', name: '19B Soup (Large)', price: 1799, description: 'Special 19B soup', image: '/19b-soup.jpg' },
-      { id: 'hot-sour-soup-small', name: 'Hot & Sour Soup (Small)', price: 399, description: 'Hot and sour soup', image: '/hot-sour-soup.jpg' },
-      { id: 'hot-sour-soup-large', name: 'Hot & Sour Soup (Large)', price: 1299, description: 'Hot and sour soup', image: '/hot-sour-soup.jpg' },
-      { id: 'cream-mushroom-soup', name: 'Cream of Mushroom Soup', price: 699, description: 'Creamy mushroom soup', image: '/cream-mushroom-soup.jpg' },
-      { id: 'aux-pollo-soup', name: 'Aux Pollo Soup', price: 699, description: 'Aux pollo style soup', image: '/aux-pollo-soup.jpg' },
-      { id: 'vegetable-soup-small', name: 'Vegetable Soup (Small)', price: 399, description: 'Vegetable soup', image: '/vegetable-soup.jpg' },
-      { id: 'vegetable-soup-large', name: 'Vegetable Soup (Large)', price: 1199, description: 'Vegetable soup', image: '/vegetable-soup.jpg' },
-      { id: 'sweet-sour-soup', name: 'Sweet & Sour Soup', price: 1299, description: 'Sweet and sour soup', image: '/sweet-sour-soup.jpg' },
+      { id: 'special-soup-small', name: 'Special Soup (Small)', price: 549, description: 'House special soup', image: '/specialsoup.jpg' },
+      { id: 'special-soup-large', name: 'Special Soup (Large)', price: 1599, description: 'House special soup', image: '/specialsoup.jpg' },
+      { id: 'soup-19b-small', name: '19B Soup (Small)', price: 599, description: 'Special 19B soup', image: '/19bsoup.jpg' },
+      { id: 'soup-19b-large', name: '19B Soup (Large)', price: 1799, description: 'Special 19B soup', image: '/19bsoup.jpg' },
+      { id: 'hot-sour-soup-small', name: 'Hot & Sour Soup (Small)', price: 399, description: 'Hot and sour soup', image: '/hotandsoursoup.jpg' },
+      { id: 'hot-sour-soup-large', name: 'Hot & Sour Soup (Large)', price: 1299, description: 'Hot and sour soup', image: '/hotandsoursoup.jpg' },
+      { id: 'cream-mushroom-soup', name: 'Cream of Mushroom Soup', price: 699, description: 'Creamy mushroom soup', image: '/mushroom.jpg' },
+      { id: 'aux-pollo-soup', name: 'Aux Pollo Soup', price: 699, description: 'Aux pollo style soup', image: '/auxpolosoup.jpg' },
+      { id: 'vegetable-soup-small', name: 'Vegetable Soup (Small)', price: 399, description: 'Vegetable soup', image: '/vegetablesoup.jpg' },
+      { id: 'vegetable-soup-large', name: 'Vegetable Soup (Large)', price: 1199, description: 'Vegetable soup', image: '/vegetablesoup.jpg' },
+      { id: 'sweet-sour-soup', name: 'Sweet & Sour Soup', price: 1299, description: 'Sweet and sour soup', image: '/sweetandsoursoup.jpg' },
     ]
   },
   {
@@ -978,11 +978,11 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Fresh Salads',
     icon: '🥗',
     items: [
-      { id: 'gym-lover-sandwich', name: 'Gym Lover Sandwich', price: 699, description: 'Healthy sandwich', image: '/gym-sandwich.jpg' },
-      { id: 'gym-platter', name: 'Gym Platter', price: 899, description: 'Gym platter', image: '/gym-platter.jpg' },
-      { id: 'caesar-salad', name: 'Caesar Salad', price: 699, description: 'Classic Caesar salad', image: '/caesar-salad.jpg' },
-      { id: 'crispy-salad', name: 'Crispy Salad', price: 699, description: 'Crispy fresh salad', image: '/crispy-salad.jpg' },
-      { id: 'coleslaw', name: 'Coleslaw', price: 249, description: 'Creamy coleslaw', image: '/coleslaw.jpg' },
+      { id: 'gym-lover-sandwich', name: 'Gym Lover Sandwich', price: 699, description: 'Healthy sandwich', image: '/gymloversandwich.jpg' },
+      { id: 'gym-platter', name: 'Gym Platter', price: 899, description: 'Gym platter', image: '/gymplatter.jpg' },
+      { id: 'caesar-salad', name: 'Caesar Salad', price: 699, description: 'Classic Caesar salad', image: '/caesarsalad.jpg' },
+      { id: 'crispy-salad', name: 'Crispy Salad', price: 699, description: 'Crispy fresh salad', image: '/crispysalad.jpg' },
+      { id: 'coleslaw', name: 'Coleslaw', price: 249, description: 'Creamy coleslaw', image: '/colslaw.jpg' },
     ]
   },
   {
@@ -990,13 +990,13 @@ const COMPLETE_MENU_CATEGORIES = [
     name: 'Tasty Sandwiches',
     icon: '🥪',
     items: [
-      { id: 'jn-special-sandwich', name: 'JN Special Sandwich', price: 799, description: 'Signature house sandwich', image: '/jn-special-sandwich.jpg' },
-      { id: 'club-sandwich', name: 'Club Sandwich', price: 749, description: 'Club sandwich', image: '/club-sandwich.jpg' },
-      { id: 'grill-chicken-sandwich', name: 'Grill Chicken Sandwich', price: 649, description: 'Grilled chicken sandwich', image: '/grill-chicken-sandwich.jpg' },
-      { id: 'jn-crispy-sandwich', name: 'JN Crispy Sandwich', price: 699, description: 'Crispy sandwich', image: '/jn-crispy-sandwich.jpg' },
-      { id: 'cheese-sandwich', name: 'Cheese Sandwich', price: 549, description: 'Cheese sandwich', image: '/cheese-sandwich.jpg' },
-      { id: 'mexican-sandwich', name: 'Mexican Sandwich', price: 899, description: 'Mexican style sandwich', image: '/mexican-sandwich.jpg' },
-      { id: 'smash-sandwich', name: 'Smash Sandwich', price: 749, description: 'Smashed sandwich', image: '/smash-sandwich.jpg' },
+      { id: 'jn-special-sandwich', name: 'JN Special Sandwich', price: 799, description: 'Signature house sandwich', image: '/gymloversandwich.jpg' },
+      { id: 'club-sandwich', name: 'Club Sandwich', price: 749, description: 'Club sandwich', image: '/clubsandwich.jpg' },
+      { id: 'grill-chicken-sandwich', name: 'Grill Chicken Sandwich', price: 649, description: 'Grilled chicken sandwich', image: '/grillchickensandwich.jpg' },
+      { id: 'jn-crispy-sandwich', name: 'JN Crispy Sandwich', price: 699, description: 'Crispy sandwich', image: '/jncrispysandwich.jpg' },
+      { id: 'cheese-sandwich', name: 'Cheese Sandwich', price: 549, description: 'Cheese sandwich', image: '/cheesesandwich.jpg' },
+      { id: 'mexican-sandwich', name: 'Mexican Sandwich', price: 899, description: 'Mexican style sandwich', image: '/mexicansandwich.jpg' },
+      { id: 'smash-sandwich', name: 'Smash Sandwich', price: 749, description: 'Smashed sandwich', image: '/smashsandwich.jpg' },
     ]
   },
   {

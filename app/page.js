@@ -4,6 +4,7 @@ import Menu from "./components/Menu";
 import BookTableSection from "./components/BookTableSection";
 import ContactSection from "./components/ContactSection";
 import GallerySection from "./components/GallerySection";
+import Footer from "./components/Footer";
 // Navbar import mat karo - layout.js mein already hai
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
      <GallerySection/>
      <BookTableSection/>
      <ContactSection/>
+     <Footer/>
     </>
   );
 }
