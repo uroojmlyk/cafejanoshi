@@ -1,874 +1,231 @@
-// 'use client'
-
-// import { useState } from 'react'
-// import { Calendar, Clock, Users, Phone, Mail, MapPin, CheckCircle, X } from 'lucide-react'
-
-// const BookTableSection = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     phone: '',
-//     email: '',
-//     date: '',
-//     time: '',
-//     guests: '2',
-//     specialRequest: ''
-//   })
-
-//   const [isSubmitting, setIsSubmitting] = useState(false)
-//   const [isSubmitted, setIsSubmitted] = useState(false)
-//   const [selectedTime, setSelectedTime] = useState('')
-
-//   const timeSlots = [
-//     '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
-//     '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM',
-//     '9:00 PM', '9:30 PM', '10:00 PM', '10:30 PM', '11:00 PM'
-//   ]
-
-//   const handleChange = (e) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value
-//     })
-//   }
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault()
-//     setIsSubmitting(true)
-    
-//     // Simulate API call
-//     setTimeout(() => {
-//       setIsSubmitting(false)
-//       setIsSubmitted(true)
-      
-//       // Reset form after 3 seconds
-//       setTimeout(() => {
-//         setIsSubmitted(false)
-//         setFormData({
-//           name: '',
-//           phone: '',
-//           email: '',
-//           date: '',
-//           time: '',
-//           guests: '2',
-//           specialRequest: ''
-//         })
-//         setSelectedTime('')
-//       }, 3000)
-//     }, 1500)
-//   }
-
-//   const getTodayDate = () => {
-//     const today = new Date()
-//     return today.toISOString().split('T')[0]
-//   }
-
-//   const getMaxDate = () => {
-//     const maxDate = new Date()
-//     maxDate.setDate(maxDate.getDate() + 30)
-//     return maxDate.toISOString().split('T')[0]
-//   }
-
-//   return (
-//     <section className="py-24 bg-gradient-to-b from-black to-zinc-950" id="booking">
-//       <div className="container mx-auto px-4 md:px-8 lg:px-12">
-        
-//         {/* Section Header */}
-//         <div className="text-center mb-16">
-//           <div className="inline-flex items-center gap-3 px-6 py-3 mb-6 bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-2xl border border-orange-500/20">
-//             <Calendar className="w-6 h-6 text-orange-400" />
-//             <span className="text-orange-300 font-semibold tracking-wide">RESERVATIONS</span>
-//           </div>
-          
-//           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-//             <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-//               Book Your
-//             </span> Table
-//           </h2>
-          
-//           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-//             Reserve your spot at Cafe Janoshi for an unforgettable dining experience
-//           </p>
-//         </div>
-
-//         <div className="grid lg:grid-cols-2 gap-16">
-          
-//           {/* Left Column - Booking Form */}
-//           <div className="relative">
-//             {/* Success Message */}
-//             {isSubmitted && (
-//               <div className="absolute inset-0 z-50 flex items-center justify-center">
-//                 <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-lg rounded-3xl p-12 border border-green-500/30 max-w-md mx-auto">
-//                   <div className="text-center space-y-6">
-//                     <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto">
-//                       <CheckCircle className="w-10 h-10 text-white" />
-//                     </div>
-//                     <h3 className="text-3xl font-bold text-white">Booking Confirmed!</h3>
-//                     <p className="text-gray-300">
-//                       Your table has been reserved. We&apos;ll send a confirmation to your phone.
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             )}
-
-//             {/* Booking Form Card */}
-//             <div className={`bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 shadow-2xl shadow-orange-500/20 p-8 transition-all duration-300 ${isSubmitted ? 'opacity-50' : 'opacity-100'}`}>
-//               <form onSubmit={handleSubmit} className="space-y-8">
-//                 {/* Personal Information */}
-//                 <div className="space-y-6">
-//                   <h3 className="text-2xl font-bold text-white">Personal Information</h3>
-                  
-//                   <div className="grid md:grid-cols-2 gap-6">
-//                     <div className="space-y-2">
-//                       <label className="text-gray-300 font-medium">Full Name *</label>
-//                       <div className="relative">
-//                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                           <Users className="w-5 h-5" />
-//                         </div>
-//                         <input
-//                           type="text"
-//                           name="name"
-//                           value={formData.name}
-//                           onChange={handleChange}
-//                           required
-//                           className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-//                           placeholder="Enter your name"
-//                         />
-//                       </div>
-//                     </div>
-
-//                     <div className="space-y-2">
-//                       <label className="text-gray-300 font-medium">Phone Number *</label>
-//                       <div className="relative">
-//                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                           <Phone className="w-5 h-5" />
-//                         </div>
-//                         <input
-//                           type="tel"
-//                           name="phone"
-//                           value={formData.phone}
-//                           onChange={handleChange}
-//                           required
-//                           className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-//                           placeholder="0321 0001112"
-//                         />
-//                       </div>
-//                     </div>
-//                   </div>
-
-//                   <div className="space-y-2">
-//                     <label className="text-gray-300 font-medium">Email Address</label>
-//                     <div className="relative">
-//                       <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                         <Mail className="w-5 h-5" />
-//                       </div>
-//                       <input
-//                         type="email"
-//                         name="email"
-//                         value={formData.email}
-//                         onChange={handleChange}
-//                         className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-//                         placeholder="your@email.com"
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-
-//                 {/* Booking Details */}
-//                 <div className="space-y-6">
-//                   <h3 className="text-2xl font-bold text-white">Booking Details</h3>
-                  
-//                   <div className="grid md:grid-cols-3 gap-6">
-//                     <div className="space-y-2">
-//                       <label className="text-gray-300 font-medium">Date *</label>
-//                       <div className="relative">
-//                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                           <Calendar className="w-5 h-5" />
-//                         </div>
-//                         <input
-//                           type="date"
-//                           name="date"
-//                           value={formData.date}
-//                           onChange={handleChange}
-//                           required
-//                           min={getTodayDate()}
-//                           max={getMaxDate()}
-//                           className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
-//                         />
-//                       </div>
-//                     </div>
-
-//                     <div className="space-y-2">
-//                       <label className="text-gray-300 font-medium">Guests *</label>
-//                       <div className="relative">
-//                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                           <Users className="w-5 h-5" />
-//                         </div>
-//                         <select
-//                           name="guests"
-//                           value={formData.guests}
-//                           onChange={handleChange}
-//                           required
-//                           className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all appearance-none"
-//                         >
-//                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-//                             <option key={num} value={num}>
-//                               {num} {num === 1 ? 'Person' : 'People'}
-//                             </option>
-//                           ))}
-//                         </select>
-//                       </div>
-//                     </div>
-
-//                     <div className="space-y-2">
-//                       <label className="text-gray-300 font-medium">Time *</label>
-//                       <div className="relative">
-//                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-//                           <Clock className="w-5 h-5" />
-//                         </div>
-//                         <select
-//                           name="time"
-//                           value={formData.time}
-//                           onChange={handleChange}
-//                           required
-//                           className="w-full pl-12 pr-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all appearance-none"
-//                         >
-//                           <option value="">Select Time</option>
-//                           {timeSlots.map(time => (
-//                             <option key={time} value={time}>
-//                               {time}
-//                             </option>
-//                           ))}
-//                         </select>
-//                       </div>
-//                     </div>
-//                   </div>
-
-//                   {/* Popular Time Slots */}
-//                   <div className="pt-4">
-//                     <p className="text-gray-300 mb-3">Popular Time Slots:</p>
-//                     <div className="flex flex-wrap gap-3">
-//                       {['7:00 PM', '8:00 PM', '9:00 PM'].map(time => (
-//                         <button
-//                           key={time}
-//                           type="button"
-//                           onClick={() => {
-//                             setFormData({ ...formData, time })
-//                             setSelectedTime(time)
-//                           }}
-//                           className={`px-4 py-2 rounded-lg border transition-all ${selectedTime === time 
-//                             ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white border-orange-500' 
-//                             : 'bg-zinc-800/50 text-gray-300 border-zinc-700 hover:border-orange-500/50'
-//                           }`}
-//                         >
-//                           {time}
-//                         </button>
-//                       ))}
-//                     </div>
-//                   </div>
-//                 </div>
-
-//                 {/* Special Request */}
-//                 <div className="space-y-2">
-//                   <label className="text-gray-300 font-medium">Special Requests</label>
-//                   <textarea
-//                     name="specialRequest"
-//                     value={formData.specialRequest}
-//                     onChange={handleChange}
-//                     rows="3"
-//                     className="w-full px-4 py-4 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
-//                     placeholder="Any special requirements? (Birthday, Anniversary, etc.)"
-//                   />
-//                 </div>
-
-//                 {/* Submit Button */}
-//                 <div className="pt-6">
-//                   <button
-//                     type="submit"
-//                     disabled={isSubmitting}
-//                     className={`w-full py-5 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 text-white font-bold text-lg rounded-2xl hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed ${isSubmitting ? 'animate-pulse' : ''}`}
-//                   >
-//                     {isSubmitting ? (
-//                       <span className="flex items-center justify-center gap-3">
-//                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-//                         Processing...
-//                       </span>
-//                     ) : (
-//                       'Confirm Reservation'
-//                     )}
-//                   </button>
-                  
-//                   <p className="text-gray-400 text-sm text-center mt-4">
-//                     We&apos;ll call you within 30 minutes to confirm your booking
-//                   </p>
-//                 </div>
-//               </form>
-//             </div>
-//           </div>
-
-//           {/* Right Column - Info & Contact */}
-//           <div className="space-y-8">
-//             {/* Contact Info Card */}
-//             <div className="bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 shadow-2xl shadow-orange-500/20 p-8">
-//               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              
-//               <div className="space-y-6">
-//                 <div className="flex items-start gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <Phone className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-1">Call Us</h4>
-//                     <a 
-//                       href="tel:03210001112" 
-//                       className="text-2xl font-bold text-white hover:text-orange-400 transition-colors"
-//                     >
-//                       0321 0001112
-//                     </a>
-//                     <p className="text-gray-400 text-sm mt-1">Available 10 AM - 12 AM</p>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <MapPin className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-2">Visit Us</h4>
-//                     <p className="text-gray-300 leading-relaxed">
-//                       RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
-//                     </p>
-//                     <button className="mt-3 text-orange-400 hover:text-orange-300 font-medium">
-//                       Get Directions →
-//                     </button>
-//                   </div>
-//                 </div>
-
-//                 <div className="flex items-start gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <Clock className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-3">Opening Hours</h4>
-//                     <div className="space-y-2">
-//                       <div className="flex justify-between items-center">
-//                         <span className="text-gray-300">Monday - Sunday</span>
-//                         <span className="text-white font-semibold">10:00 AM - 1:00 AM</span>
-//                       </div>
-//                       <div className="text-sm text-gray-400">
-//                         Last reservation at 11:30 PM
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-
-//             {/* Why Book With Us */}
-//             <div className="bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 shadow-2xl shadow-orange-500/20 p-8">
-//               <h3 className="text-2xl font-bold text-white mb-6">Why Book With Us?</h3>
-              
-//               <div className="space-y-6">
-//                 {[
-//                   { 
-//                     title: 'Priority Seating', 
-//                     desc: 'Guaranteed table even during peak hours',
-//                     icon: '✓'
-//                   },
-//                   { 
-//                     title: 'Special Offers', 
-//                     desc: '10% discount on pre-booked orders',
-//                     icon: '🎁'
-//                   },
-//                   { 
-//                     title: 'Birthday Special', 
-//                     desc: 'Free dessert for birthday celebrations',
-//                     icon: '🎂'
-//                   },
-//                   { 
-//                     title: 'Quick Confirmation', 
-//                     desc: 'Instant confirmation via SMS & call',
-//                     icon: '⚡'
-//                   },
-//                 ].map((feature, index) => (
-//                   <div key={index} className="flex items-start gap-4">
-//                     <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl flex items-center justify-center">
-//                       <span className="text-orange-400 font-bold">{feature.icon}</span>
-//                     </div>
-//                     <div>
-//                       <h4 className="text-lg font-bold text-white mb-1">{feature.title}</h4>
-//                       <p className="text-gray-400">{feature.desc}</p>
-//                     </div>
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-
-//             {/* Walk-in Info */}
-//             <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-3xl border border-orange-500/20 p-6">
-//               <div className="flex items-center gap-4">
-//                 <div className="p-3 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl">
-//                   <X className="w-6 h-6 text-orange-400" />
-//                 </div>
-//                 <div>
-//                   <h4 className="text-lg font-bold text-white mb-1">Walk-in Available</h4>
-//                   <p className="text-gray-300">
-//                     No reservation? No problem! Walk-ins welcome based on availability.
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Decorative Elements */}
-//         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-500/3 to-transparent rounded-full blur-3xl -z-10"></div>
-//         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tl from-red-500/2 to-transparent rounded-full blur-3xl -z-10"></div>
-//       </div>
-//     </section>
-//   )
-// }
-
-// export default BookTableSection  
-
-
-
-
-
-
-
-
 'use client'
 
 import { useState } from 'react'
-import { Calendar, Clock, Users, Phone, Mail, MapPin, CheckCircle, X } from 'lucide-react'
+import { Calendar, Clock, Users, Phone, CheckCircle } from 'lucide-react'
 
-const BookTableSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    date: '',
-    time: '',
-    guests: '2',
-    specialRequest: ''
-  })
+const TIME_SLOTS = [
+  '12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM',
+  '6:00 PM','6:30 PM','7:00 PM','7:30 PM','8:00 PM',
+  '8:30 PM','9:00 PM','9:30 PM','10:00 PM','11:00 PM',
+]
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [selectedTime, setSelectedTime] = useState('')
+const today  = () => new Date().toISOString().split('T')[0]
+const maxDay = () => { const d = new Date(); d.setDate(d.getDate()+30); return d.toISOString().split('T')[0] }
 
-  const timeSlots = [
-    '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
-    '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM',
-    '9:00 PM', '9:30 PM', '10:00 PM', '10:30 PM', '11:00 PM'
-  ]
+export default function BookTableSection() {
+  const [form, setForm] = useState({ name:'', phone:'', email:'', date:'', time:'', guests:'2', note:'' })
+  const [busy, setBusy]     = useState(false)
+  const [done, setDone]     = useState(false)
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const handleChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
+  const pickTime     = t  => setForm(p => ({ ...p, time: t }))
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate API call
+    setBusy(true)
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      
-      // Reset form after 3 seconds
+      setBusy(false); setDone(true)
       setTimeout(() => {
-        setIsSubmitted(false)
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          date: '',
-          time: '',
-          guests: '2',
-          specialRequest: ''
-        })
-        setSelectedTime('')
-      }, 3000)
+        setDone(false)
+        setForm({ name:'', phone:'', email:'', date:'', time:'', guests:'2', note:'' })
+      }, 3500)
     }, 1500)
   }
 
-  const getTodayDate = () => {
-    const today = new Date()
-    return today.toISOString().split('T')[0]
-  }
-
-  const getMaxDate = () => {
-    const maxDate = new Date()
-    maxDate.setDate(maxDate.getDate() + 30)
-    return maxDate.toISOString().split('T')[0]
-  }
-
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-black to-zinc-950" id="booking">
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16 px-2">
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-orange-500/20">
-            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-            <span className="text-orange-300 text-xs sm:text-sm md:text-base font-semibold tracking-wide">
-              RESERVATIONS
-            </span>
-          </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              Book Your
-            </span> Table
-          </h2>
-          
-          <p className="text-sm sm:text-base md:text-xl text-gray-400 max-w-3xl mx-auto px-2">
-            Reserve your spot at Cafe Janoshi for an unforgettable dining experience
+    <section id="booking" style={{ background: 'var(--fg)', padding: '120px 0' }}>
+      <div className="bk-container">
+
+        {/* Left */}
+        <div className="bk-left">
+          <div className="bk-label">Reservations</div>
+          <h2 className="bk-title">Reserve<br /><em>Your Table</em></h2>
+          <p className="bk-sub">
+            Join us for an unforgettable dining experience at Cafe Janoshi. 
+            Private dining room available for special occasions.
           </p>
-        </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
-          
-          {/* Left Column - Booking Form */}
-          <div className="relative">
-            {/* Success Message */}
-            {isSubmitted && (
-              <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
-                <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-green-500/30 max-w-md w-full mx-auto">
-                  <div className="text-center space-y-4 sm:space-y-6">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto">
-                      <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">Booking Confirmed!</h3>
-                    <p className="text-gray-300 text-sm sm:text-base">
-                      Your table has been reserved. We'll send a confirmation to your phone.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Booking Form Card */}
-            <div className={`bg-gradient-to-br from-zinc-900 to-black rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-orange-500/30 shadow-xl sm:shadow-2xl shadow-orange-500/20 p-4 sm:p-6 md:p-8 transition-all duration-300 ${isSubmitted ? 'opacity-50' : 'opacity-100'}`}>
-              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                {/* Personal Information */}
-                <div className="space-y-4 sm:space-y-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">Personal Information</h3>
-                  
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="space-y-2">
-                      <label className="text-gray-300 text-sm sm:text-base font-medium">Full Name *</label>
-                      <div className="relative">
-                        <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
-                          placeholder="Enter your name"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-gray-300 text-sm sm:text-base font-medium">Phone Number *</label>
-                      <div className="relative">
-                        <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          required
-                          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
-                          placeholder="0321 0001112"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-gray-300 text-sm sm:text-base font-medium">Email Address</label>
-                    <div className="relative">
-                      <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </div>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Booking Details */}
-                <div className="space-y-4 sm:space-y-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">Booking Details</h3>
-                  
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    <div className="space-y-2">
-                      <label className="text-gray-300 text-sm sm:text-base font-medium">Date *</label>
-                      <div className="relative">
-                        <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <input
-                          type="date"
-                          name="date"
-                          value={formData.date}
-                          onChange={handleChange}
-                          required
-                          min={getTodayDate()}
-                          max={getMaxDate()}
-                          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-gray-300 text-sm sm:text-base font-medium">Guests *</label>
-                      <div className="relative">
-                        <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <select
-                          name="guests"
-                          value={formData.guests}
-                          onChange={handleChange}
-                          required
-                          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base appearance-none"
-                        >
-                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                            <option key={num} value={num}>
-                              {num} {num === 1 ? 'Person' : 'People'}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 lg:col-span-1 sm:col-span-2 lg:col-span-1">
-                      <label className="text-gray-300 text-sm sm:text-base font-medium">Time *</label>
-                      <div className="relative">
-                        <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
-                        </div>
-                        <select
-                          name="time"
-                          value={formData.time}
-                          onChange={handleChange}
-                          required
-                          className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base appearance-none"
-                        >
-                          <option value="">Select Time</option>
-                          {timeSlots.map(time => (
-                            <option key={time} value={time}>
-                              {time}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Popular Time Slots */}
-                  <div className="pt-2 sm:pt-4">
-                    <p className="text-gray-300 text-sm sm:text-base mb-2 sm:mb-3">Popular Time Slots:</p>
-                    <div className="flex flex-wrap gap-2 sm:gap-3">
-                      {['7:00 PM', '8:00 PM', '9:00 PM'].map(time => (
-                        <button
-                          key={time}
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, time })
-                            setSelectedTime(time)
-                          }}
-                          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border transition-all text-xs sm:text-sm ${selectedTime === time 
-                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white border-orange-500' 
-                            : 'bg-zinc-800/50 text-gray-300 border-zinc-700 hover:border-orange-500/50'
-                          }`}
-                        >
-                          {time}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Special Request */}
-                <div className="space-y-2">
-                  <label className="text-gray-300 text-sm sm:text-base font-medium">Special Requests</label>
-                  <textarea
-                    name="specialRequest"
-                    value={formData.specialRequest}
-                    onChange={handleChange}
-                    rows="3"
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none text-sm sm:text-base"
-                    placeholder="Any special requirements? (Birthday, Anniversary, etc.)"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <div className="pt-4 sm:pt-6">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full py-3 sm:py-4 md:py-5 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 text-white font-bold text-base sm:text-lg rounded-xl sm:rounded-2xl hover:shadow-xl sm:hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed ${isSubmitting ? 'animate-pulse' : ''}`}
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center justify-center gap-2 sm:gap-3">
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span className="text-sm sm:text-base">Processing...</span>
-                      </span>
-                    ) : (
-                      'Confirm Reservation'
-                    )}
-                  </button>
-                  
-                  <p className="text-gray-400 text-xs sm:text-sm text-center mt-3 sm:mt-4">
-                    We'll call you within 30 minutes to confirm your booking
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          {/* Right Column - Info & Contact */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Contact Info Card */}
-            <div className="bg-gradient-to-br from-zinc-900 to-black rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-orange-500/30 shadow-xl sm:shadow-2xl shadow-orange-500/20 p-4 sm:p-6 md:p-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Contact Information</h3>
-              
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-1">Call Us</h4>
-                    <a 
-                      href="tel:03210001112" 
-                      className="text-lg sm:text-xl md:text-2xl font-bold text-white hover:text-orange-400 transition-colors block"
-                    >
-                      0321 0001112
-                    </a>
-                    <p className="text-gray-400 text-xs sm:text-sm mt-1">Available 10 AM - 12 AM</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Visit Us</h4>
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara
-                    </p>
-                    <button className="mt-2 sm:mt-3 text-orange-400 hover:text-orange-300 font-medium text-sm sm:text-base">
-                      Get Directions →
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Opening Hours</h4>
-                    <div className="space-y-1 sm:space-y-2">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
-                        <span className="text-gray-300 text-sm sm:text-base">Monday - Sunday</span>
-                        <span className="text-white font-semibold text-sm sm:text-base">10:00 AM - 1:00 AM</span>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400">
-                        Last reservation at 11:30 PM
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Why Book With Us */}
-            <div className="bg-gradient-to-br from-zinc-900 to-black rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-orange-500/30 shadow-xl sm:shadow-2xl shadow-orange-500/20 p-4 sm:p-6 md:p-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Why Book With Us?</h3>
-              
-              <div className="space-y-4 sm:space-y-6">
-                {[
-                  { 
-                    title: 'Priority Seating', 
-                    desc: 'Guaranteed table even during peak hours',
-                    icon: '✓'
-                  },
-                  { 
-                    title: 'Special Offers', 
-                    desc: '10% discount on pre-booked orders',
-                    icon: '🎁'
-                  },
-                  { 
-                    title: 'Birthday Special', 
-                    desc: 'Free dessert for birthday celebrations',
-                    icon: '🎂'
-                  },
-                  { 
-                    title: 'Quick Confirmation', 
-                    desc: 'Instant confirmation via SMS & call',
-                    icon: '⚡'
-                  },
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg sm:rounded-xl flex items-center justify-center">
-                      <span className="text-orange-400 font-bold text-sm sm:text-base">{feature.icon}</span>
-                    </div>
-                    <div>
-                      <h4 className="text-base sm:text-lg font-bold text-white mb-1">{feature.title}</h4>
-                      <p className="text-gray-400 text-xs sm:text-sm">{feature.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Walk-in Info */}
-            <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-xl sm:rounded-2xl md:rounded-3xl border border-orange-500/20 p-4 sm:p-6">
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg sm:rounded-xl flex-shrink-0">
-                  <X className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                </div>
+          <div className="bk-info-list">
+            {[
+              { icon: <Phone size={15} strokeWidth={1.5} />, label: 'Call directly', value: '0321 000 1112', href: 'tel:03210001112' },
+              { icon: <Clock size={15} strokeWidth={1.5} />, label: 'Hours',          value: 'Mon – Sun · 10 am – 12:59 am' },
+              { icon: <Users size={15} strokeWidth={1.5} />, label: 'Group dining',   value: 'Private room for special events' },
+            ].map(i => (
+              <div key={i.label} className="bk-info-item">
+                <div className="bk-info-icon">{i.icon}</div>
                 <div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-1">Walk-in Available</h4>
-                  <p className="text-gray-300 text-xs sm:text-sm">
-                    No reservation? No problem! Walk-ins welcome based on availability.
-                  </p>
+                  <div className="bk-info-label">{i.label}</div>
+                  {i.href
+                    ? <a href={i.href} className="bk-info-value bk-link">{i.value}</a>
+                    : <div className="bk-info-value">{i.value}</div>
+                  }
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-br from-orange-500/3 to-transparent rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-red-500/2 to-transparent rounded-full blur-3xl -z-10"></div>
+        {/* Right — form */}
+        <div className="bk-right">
+          {done ? (
+            <div className="bk-success">
+              <CheckCircle size={40} strokeWidth={1} />
+              <h3>Reservation Confirmed</h3>
+              <p>We'll contact you shortly to confirm your booking.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bk-form">
+              <div className="bk-form-row">
+                <div className="bk-field">
+                  <label className="bk-label-field">Full Name *</label>
+                  <input name="name" value={form.name} onChange={handleChange}
+                    required placeholder="Your name" className="bk-input" />
+                </div>
+                <div className="bk-field">
+                  <label className="bk-label-field">Phone *</label>
+                  <input name="phone" value={form.phone} onChange={handleChange}
+                    required placeholder="0300 0000000" className="bk-input" />
+                </div>
+              </div>
+
+              <div className="bk-form-row">
+                <div className="bk-field">
+                  <label className="bk-label-field">Date *</label>
+                  <input type="date" name="date" value={form.date} onChange={handleChange}
+                    required min={today()} max={maxDay()} className="bk-input" />
+                </div>
+                <div className="bk-field">
+                  <label className="bk-label-field">Guests *</label>
+                  <select name="guests" value={form.guests} onChange={handleChange} className="bk-input">
+                    {[1,2,3,4,5,6,7,8,'9+'].map(n=>(
+                      <option key={n} value={n}>{n} {n===1?'Guest':'Guests'}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="bk-field">
+                <label className="bk-label-field">Preferred Time *</label>
+                <div className="bk-time-grid">
+                  {TIME_SLOTS.map(t => (
+                    <button type="button" key={t}
+                      onClick={() => pickTime(t)}
+                      className={`bk-time-btn${form.time === t ? ' bk-time-btn--active' : ''}`}
+                    >{t}</button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bk-field">
+                <label className="bk-label-field">Special Requests</label>
+                <textarea name="note" value={form.note} onChange={handleChange}
+                  placeholder="Dietary requirements, special occasion, etc."
+                  rows={3} className="bk-input bk-textarea" />
+              </div>
+
+              <button type="submit" className="bk-submit" disabled={busy || !form.time}>
+                {busy ? 'Confirming…' : 'Confirm Reservation'}
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
+
+      <style jsx global>{`
+        .bk-container {
+          max-width: 1320px; margin: 0 auto; padding: 0 40px;
+          display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start;
+        }
+        @media (max-width: 900px) { .bk-container { grid-template-columns: 1fr; gap: 60px; } }
+        @media (max-width: 600px) { .bk-container { padding: 0 20px; } }
+
+        /* Left */
+        .bk-left { color: rgba(243,237,226,0.85); }
+        .bk-label {
+          font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.28em;
+          text-transform: uppercase; color: rgba(243,237,226,0.4); font-weight: 300; margin-bottom: 24px;
+        }
+        .bk-title {
+          font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.8rem);
+          font-weight: 300; color: #f3ede2; line-height: 1.1; margin-bottom: 24px;
+        }
+        .bk-title em { font-style: italic; }
+        .bk-sub {
+          font-family: var(--font-body); font-size: 0.95rem; font-weight: 100;
+          color: rgba(243,237,226,0.55); line-height: 1.8; margin-bottom: 48px;
+        }
+        .bk-info-list { display: flex; flex-direction: column; gap: 24px; }
+        .bk-info-item { display: flex; gap: 14px; align-items: flex-start; }
+        .bk-info-icon { color: var(--accent-light); margin-top: 2px; flex-shrink: 0; }
+        .bk-info-label {
+          font-family: var(--font-body); font-size: 0.62rem; letter-spacing: 0.18em;
+          text-transform: uppercase; color: rgba(243,237,226,0.35); margin-bottom: 3px;
+        }
+        .bk-info-value {
+          font-family: var(--font-body); font-size: 0.9rem; font-weight: 300;
+          color: rgba(243,237,226,0.75);
+        }
+        .bk-link { text-decoration: none; transition: color 0.3s; }
+        .bk-link:hover { color: var(--accent-light); }
+
+        /* Form */
+        .bk-right {
+          background: var(--bg); padding: 48px;
+        }
+        @media (max-width: 480px) { .bk-right { padding: 28px 20px; } }
+        .bk-form { display: flex; flex-direction: column; gap: 24px; }
+        .bk-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 480px) { .bk-form-row { grid-template-columns: 1fr; } }
+        .bk-field { display: flex; flex-direction: column; gap: 8px; }
+        .bk-label-field {
+          font-family: var(--font-body); font-size: 0.62rem; letter-spacing: 0.18em;
+          text-transform: uppercase; color: var(--fg-muted); font-weight: 300;
+        }
+        .bk-input {
+          font-family: var(--font-body); font-size: 0.9rem; font-weight: 100;
+          color: var(--fg); background: transparent; border: none;
+          border-bottom: 1px solid var(--border); padding: 10px 0;
+          outline: none; transition: border-color 0.3s; width: 100%;
+          letter-spacing: 0.03em;
+        }
+        .bk-input:focus { border-color: var(--fg); }
+        .bk-input::placeholder { color: var(--fg-muted); }
+        .bk-textarea { resize: none; }
+
+        .bk-time-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .bk-time-btn {
+          font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.1em;
+          padding: 7px 12px; border: 1px solid var(--border); background: transparent;
+          color: var(--fg-muted); cursor: pointer; transition: all 0.25s; text-transform: uppercase;
+        }
+        .bk-time-btn:hover { border-color: var(--fg-muted); color: var(--fg); }
+        .bk-time-btn--active { border-color: var(--fg); background: var(--fg); color: var(--bg); }
+
+        .bk-submit {
+          font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.18em;
+          text-transform: uppercase; font-weight: 400;
+          width: 100%; padding: 16px; background: var(--fg); color: var(--bg);
+          border: none; cursor: pointer; transition: background 0.35s; margin-top: 8px;
+        }
+        .bk-submit:hover:not(:disabled) { background: var(--accent-dark); }
+        .bk-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Success */
+        .bk-success {
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 16px; text-align: center; padding: 60px 20px;
+          color: var(--fg);
+        }
+        .bk-success svg { color: var(--accent-dark); }
+        .bk-success h3 {
+          font-family: var(--font-display); font-size: 1.8rem; font-weight: 300;
+        }
+        .bk-success p {
+          font-family: var(--font-body); font-size: 0.9rem; font-weight: 100;
+          color: var(--fg-muted);
+        }
+      `}</style>
     </section>
   )
 }
-
-export default BookTableSection

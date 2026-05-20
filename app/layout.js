@@ -1,51 +1,62 @@
-// import { Inter } from 'next/font/google'
-// import './globals.css'
-// import Navbar from './components/Navbar'
-// const inter = Inter({ subsets: ['latin'] })
+// import './globals.css';
+// import { CartProvider } from './context/CartContext';
+// import Navbar from './components/Navbar';
 
 // export const metadata = {
-//   title: 'Cafe Janoshi | Okara\'s Premium Restaurant',
-//   description: 'Experience the finest dining in Okara at Cafe Janoshi. Authentic flavors, cozy ambiance, and unforgettable moments.',
-// }
+//   title: "Cafe Janoshi | Okara's Premier Dining",
+//   description: 'A refined dining experience in the heart of Okara. Artisan coffee, handcrafted desserts, premium steaks. RC7X+CW4, Tehsil Rd, Waris Colony, Okara.',
+// };
 
 // export default function RootLayout({ children }) {
 //   return (
 //     <html lang="en">
-//       <body className={`${inter.className} bg-[#0F0F0F] text-[#F8F5F0]`}>
-//         <Navbar />
-//         <main className="min-h-screen">
-//           {children}
-//         </main>
-//         {/* Footer will be added later */}
+//       <head>
+//         <link rel="preconnect" href="https://fonts.googleapis.com" />
+//         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+//         <link
+//           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+//           rel="stylesheet"
+//         />
+//       </head>
+//       <body>
+//         <CartProvider>
+//           <Navbar />
+//           <main>{children}</main>
+//         </CartProvider>
 //       </body>
 //     </html>
-//   )
+//   );
 // }
 
 
 
 
-import { Inter } from 'next/font/google';
+
 import './globals.css';
-import { CartProvider } from './context/CartContext'; // ✅ Direct path
-import Navbar from './components/Navbar'; // ✅ Direct path
-
-const inter = Inter({ subsets: ['latin'] });
-
+import { CartProvider } from './context/CartContext';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 export const metadata = {
-  title: 'Cafe Janoshi | Okara\'s Premium Restaurant',
-  description: 'Experience the finest dining in Okara at Cafe Janoshi.',
+  title: "Cafe Janoshi | Okara's Premier Dining",
+  description: 'A refined dining experience in the heart of Okara. Artisan coffee, handcrafted desserts, premium steaks. RC7X+CW4, Tehsil Rd, Waris Colony, Okara.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#0F0F0F] text-[#F8F5F0]`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="flex flex-col min-h-screen">
         <CartProvider>
           <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <main className="flex-grow">{children}</main>
+          <Footer /> {/* ← Footer yahan aayega */}
         </CartProvider>
       </body>
     </html>

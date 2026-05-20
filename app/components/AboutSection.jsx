@@ -1,494 +1,376 @@
-// 'use client'
-
-// import { MapPin, Phone, Clock, Instagram, Facebook, Users, Award, Heart } from 'lucide-react'
-
-// const AboutSection = () => {
-//   return (
-//     <section className="py-24 bg-gradient-to-b from-zinc-950 to-black" id="about">
-//       <div className="container mx-auto px-4 md:px-8 lg:px-12">
-        
-//         {/* Section Header */}
-//         <div className="text-center mb-16">
-//           <div className="inline-flex items-center gap-3 px-6 py-3 mb-6 bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-2xl border border-orange-500/20">
-//             <Heart className="w-6 h-6 text-orange-400" />
-//             <span className="text-orange-300 font-semibold tracking-wide">OUR STORY</span>
-//           </div>
-          
-//           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-//             <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-//               About Cafe
-//             </span> Janoshi
-//           </h2>
-          
-//           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-//             Where tradition meets taste, and every meal tells a story of Okara's rich culinary heritage.
-//           </p>
-//         </div>
-
-//         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-//           {/* Left Column - Our Story */}
-//           <div className="space-y-10">
-//             {/* Main Story */}
-//             <div className="space-y-6">
-//               <h3 className="text-4xl font-bold text-white">
-//                 A Decade of <span className="text-orange-400">Culinary Excellence</span>
-//               </h3>
-              
-//               <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-//                 <p>
-//                   Founded over 12 years ago, <span className="text-orange-400 font-semibold">Cafe Janoshi</span> has been at the heart of Okara's dining scene, serving as a beloved gathering spot for food enthusiasts, families, and friends.
-//                 </p>
-                
-//                 <p>
-//                   What started as a small cafe with a passion for authentic flavors has grown into Okara's premier dining destination, celebrated for its innovative menu that blends traditional recipes with contemporary culinary techniques.
-//                 </p>
-                
-//                 <p>
-//                   Our philosophy is simple: use the freshest local ingredients, prepare each dish with love and attention, and create memorable dining experiences that keep our community coming back.
-//                 </p>
-//               </div>
-//             </div>
-
-//             {/* Stats */}
-//             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8">
-//               {[
-//                 { value: '12+', label: 'Years Experience', icon: <Award className="w-5 h-5" /> },
-//                 { value: '155+', label: 'Menu Items', icon: <Heart className="w-5 h-5" /> },
-//                 { value: '1.7K+', label: 'Followers', icon: <Users className="w-5 h-5" /> },
-//               ].map((stat, index) => (
-//                 <div 
-//                   key={index}
-//                   className="group bg-gradient-to-b from-zinc-900/40 to-black/40 p-6 rounded-2xl border border-zinc-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105"
-//                 >
-//                   <div className="flex flex-col items-center text-center space-y-3">
-//                     <div className="p-3 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-xl text-orange-400">
-//                       {stat.icon}
-//                     </div>
-//                     <div className="text-3xl font-bold text-white">{stat.value}</div>
-//                     <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-
-//           {/* Right Column - Contact & Info Card */}
-//           <div className="relative">
-//             {/* Card with Glow Effect */}
-//             <div className="relative bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-orange-500/30 shadow-2xl shadow-orange-500/20">
-              
-//               {/* Header */}
-//               <div className="p-8 border-b border-zinc-800">
-//                 <div className="flex items-center gap-4">
-//                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center">
-//                     <span className="text-black text-2xl font-bold">CJ</span>
-//                   </div>
-//                   <div>
-//                     <h3 className="text-2xl font-bold text-white">Cafe Janoshi</h3>
-//                     <p className="text-gray-400">Okara's Flavor Hub</p>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Contact Info */}
-//               <div className="p-8 space-y-8">
-//                 {/* Address */}
-//                 <div className="flex items-start gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <MapPin className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-2">Our Location</h4>
-//                     <p className="text-gray-300 leading-relaxed">
-//                       RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara, Punjab
-//                     </p>
-//                     <button className="mt-3 text-orange-400 hover:text-orange-300 font-medium flex items-center gap-2">
-//                       <span>View on Map</span>
-//                       <ArrowRight className="w-4 h-4" />
-//                     </button>
-//                   </div>
-//                 </div>
-
-//                 {/* Phone */}
-//                 <div className="flex items-center gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <Phone className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-1">Contact Number</h4>
-//                     <a 
-//                       href="tel:03210001112" 
-//                       className="text-2xl font-bold text-white hover:text-orange-400 transition-colors"
-//                     >
-//                       0321 0001112
-//                     </a>
-//                     <p className="text-gray-400 text-sm mt-1">Call for reservations & orders</p>
-//                   </div>
-//                 </div>
-
-//                 {/* Hours */}
-//                 <div className="flex items-start gap-4">
-//                   <div className="p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-xl">
-//                     <Clock className="w-6 h-6 text-orange-400" />
-//                   </div>
-//                   <div className="flex-1">
-//                     <h4 className="text-lg font-bold text-white mb-3">Opening Hours</h4>
-//                     <div className="space-y-2">
-//                       <div className="flex justify-between items-center">
-//                         <span className="text-gray-300">Monday - Sunday</span>
-//                         <span className="text-white font-semibold">10:00 AM - 1:00 AM</span>
-//                       </div>
-//                       <div className="text-sm text-gray-400">
-//                         Open everyday • Last order at 12:30 AM
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-
-//                 {/* Social Media */}
-//                 <div className="pt-6 border-t border-zinc-800">
-//                   <h4 className="text-lg font-bold text-white mb-4">Follow Us</h4>
-//                   <div className="flex gap-4">
-//                     <a 
-//                       href="https://instagram.com/cafejanoshi" 
-//                       target="_blank" 
-//                       rel="noopener noreferrer"
-//                       className="group flex-1"
-//                     >
-//                       <div className="bg-gradient-to-br from-zinc-900 to-black p-4 rounded-2xl border border-zinc-800 hover:border-pink-500/50 transition-all duration-300 group-hover:scale-105">
-//                         <div className="flex items-center gap-3">
-//                           <div className="p-2 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-lg">
-//                             <Instagram className="w-5 h-5 text-pink-400" />
-//                           </div>
-//                           <div>
-//                             <div className="font-bold text-white">Instagram</div>
-//                             <div className="text-gray-400 text-sm">@cafejanoshi</div>
-//                           </div>
-//                         </div>
-//                       </div>
-//                     </a>
-                    
-//                     <a 
-//                       href="https://facebook.com/Janoshi" 
-//                       target="_blank" 
-//                       rel="noopener noreferrer"
-//                       className="group flex-1"
-//                     >
-//                       <div className="bg-gradient-to-br from-zinc-900 to-black p-4 rounded-2xl border border-zinc-800 hover:border-blue-500/50 transition-all duration-300 group-hover:scale-105">
-//                         <div className="flex items-center gap-3">
-//                           <div className="p-2 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg">
-//                             <Facebook className="w-5 h-5 text-blue-400" />
-//                           </div>
-//                           <div>
-//                             <div className="font-bold text-white">Facebook</div>
-//                             <div className="text-gray-400 text-sm">1.7K+ followers</div>
-//                           </div>
-//                         </div>
-//                       </div>
-//                     </a>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Footer */}
-//               <div className="p-6 bg-gradient-to-r from-orange-500/5 to-red-500/5 border-t border-zinc-800">
-//                 <div className="text-center">
-//                   <p className="text-gray-300">
-//                     Visit us today and experience the taste of Okara!
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-
-//             {/* Decorative Elements */}
-//             <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-500/5 to-transparent rounded-full blur-xl"></div>
-//             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-tl from-yellow-500/5 to-transparent rounded-full blur-xl"></div>
-//           </div>
-//         </div>
-
-//         {/* Mission Statement */}
-//         <div className="mt-24">
-//           <div className="max-w-4xl mx-auto">
-//             <div className="bg-gradient-to-r from-orange-500/5 to-red-500/5 backdrop-blur-lg rounded-3xl p-12 border border-orange-500/20">
-//               <div className="text-center space-y-6">
-//                 <Heart className="w-12 h-12 text-orange-400 mx-auto" />
-//                 <h3 className="text-3xl font-bold text-white">
-//                   Our <span className="text-orange-400">Mission</span>
-//                 </h3>
-//                 <p className="text-xl text-gray-300 leading-relaxed">
-//                   To create unforgettable dining experiences by combining authentic Pakistani flavors with modern culinary artistry, 
-//                   while maintaining the warmth and hospitality that our community has cherished for over a decade.
-//                 </p>
-//                 <div className="pt-6">
-//                   <button 
-//                     onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-//                     className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 hover:scale-105"
-//                   >
-//                     <span>Explore Our Menu</span>
-//                     <ArrowRight className="w-5 h-5" />
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
-
-// export default AboutSection
-
-// // ArrowRight component add karo agar needed ho
-// const ArrowRight = ({ className }) => (
-//   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-//   </svg>
-// )  
-
-
-
-
-
 'use client'
 
-import { MapPin, Phone, Clock, Instagram, Facebook, Users, Award, Heart, ArrowRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { MapPin, Phone, Clock, Instagram, Facebook, ArrowRight } from 'lucide-react'
 
-const AboutSection = () => {
+function useReveal() {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
+      { threshold: 0.12 }
+    )
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [])
+  return [ref, visible]
+}
+
+export default function AboutSection() {
+  const [secRef, secVisible] = useReveal()
+  const [imgRef, imgVisible] = useReveal()
+
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-zinc-950 to-black" id="about">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-orange-500/20">
-            <Heart className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-400" />
-            <span className="text-orange-300 font-semibold tracking-wide text-xs sm:text-sm md:text-base">OUR STORY</span>
-          </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              About Cafe
-            </span> Janoshi
+    <section id="about" style={{ background: 'var(--bg)', padding: '120px 0' }}>
+      <div className="ab-container">
+
+        {/* ── Section label ── */}
+        <div className="ab-label">Our Story</div>
+
+        {/* ── Headline ── */}
+        <div
+          ref={secRef}
+          className="ab-headline-row"
+          style={{
+            opacity: secVisible ? 1 : 0,
+            transform: secVisible ? 'none' : 'translateY(36px)',
+            transition: 'opacity 1s ease, transform 1s ease',
+          }}
+        >
+          <h2 className="ab-headline">
+            A decade of <em>culinary</em><br />excellence in Okara
           </h2>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl sm:max-w-3xl mx-auto px-4 sm:px-0">
-            Where tradition meets taste, and every meal tells a story of Okara's rich culinary heritage.
-          </p>
+          <div className="ab-headline-line" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
-          
-          {/* Left Column - Our Story */}
-          <div className="space-y-8 sm:space-y-10">
-            {/* Main Story */}
-            <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                A Decade of <span className="text-orange-400">Culinary Excellence</span>
-              </h3>
-              
-              <div className="space-y-3 sm:space-y-4 text-gray-300 text-base sm:text-lg leading-relaxed">
-                <p>
-                  Founded over 12 years ago, <span className="text-orange-400 font-semibold">Cafe Janoshi</span> has been at the heart of Okara's dining scene, serving as a beloved gathering spot for food enthusiasts, families, and friends.
-                </p>
-                
-                <p>
-                  What started as a small cafe with a passion for authentic flavors has grown into Okara's premier dining destination, celebrated for its innovative menu that blends traditional recipes with contemporary culinary techniques.
-                </p>
-                
-                <p>
-                  Our philosophy is simple: use the freshest local ingredients, prepare each dish with love and attention, and create memorable dining experiences that keep our community coming back.
-                </p>
-              </div>
-            </div>
+        {/* ── Two-col layout ── */}
+        <div className="ab-grid">
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8">
+          {/* Left — image stack */}
+          <div
+            ref={imgRef}
+            className="ab-img-col"
+            style={{
+              opacity: imgVisible ? 1 : 0,
+              transform: imgVisible ? 'none' : 'translateX(-30px)',
+              transition: 'opacity 1.1s ease, transform 1.1s ease',
+            }}
+          >
+            <div className="ab-img-main">
+              <img
+                src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80"
+                alt="Cafe Janoshi interior"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
+            <div className="ab-img-accent">
+              <img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=400&q=80"
+                alt="Cafe detail"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
+            {/* floating tag */}
+            <div className="ab-float-tag">
+              <span className="ab-float-num">12+</span>
+              <span className="ab-float-txt">Years serving Okara</span>
+            </div>
+          </div>
+
+          {/* Right — content */}
+          <div className="ab-content-col">
+            <p className="ab-body">
+              Founded over twelve years ago, <strong>Cafe Janoshi</strong> has been at the heart of 
+              Okara's dining scene — a beloved gathering spot for food enthusiasts, families, and friends 
+              alike. What started as a small cafe with a passion for authentic flavours has grown into 
+              Okara's premier dining destination.
+            </p>
+            <p className="ab-body">
+              Our philosophy is simple: use the freshest local ingredients, prepare each dish with care and 
+              attention, and create memorable dining experiences that keep our community coming back. 
+              We offer private dining, family-friendly spaces, and a warm atmosphere you'll want to return to.
+            </p>
+
+            {/* Info cards */}
+            <div className="ab-cards">
               {[
-                { value: '12+', label: 'Years Experience', icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" /> },
-                { value: '155+', label: 'Menu Items', icon: <Heart className="w-4 h-4 sm:w-5 sm:h-5" /> },
-                { value: '1.7K+', label: 'Followers', icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" /> },
-              ].map((stat, index) => (
-                <div 
-                  key={index}
-                  className="group bg-gradient-to-b from-zinc-900/40 to-black/40 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-zinc-800 hover:border-orange-500/50 transition-all duration-300 sm:hover:scale-105"
-                >
-                  <div className="flex flex-col items-center text-center space-y-2 sm:space-y-3">
-                    <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-lg sm:rounded-xl text-orange-400">
-                      {stat.icon}
-                    </div>
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                    <div className="text-gray-400 text-xs sm:text-sm font-medium">{stat.label}</div>
+                {
+                  icon: <MapPin size={16} strokeWidth={1.5} />,
+                  label: 'Location',
+                  value: 'RC7X+CW4, Tehsil Rd, Waris Colony, Okara',
+                  link: 'https://maps.google.com/?q=Cafe+Janoshi+Okara',
+                  linkText: 'View on map',
+                },
+                {
+                  icon: <Phone size={16} strokeWidth={1.5} />,
+                  label: 'Reservations',
+                  value: '0321 000 1112',
+                  link: 'tel:03210001112',
+                  linkText: 'Call us',
+                },
+                {
+                  icon: <Clock size={16} strokeWidth={1.5} />,
+                  label: 'Hours',
+                  value: 'Mon – Sun · 10:00 am – 12:59 am',
+                  link: null,
+                },
+              ].map((c) => (
+                <div key={c.label} className="ab-card">
+                  <div className="ab-card-icon">{c.icon}</div>
+                  <div className="ab-card-body">
+                    <span className="ab-card-label">{c.label}</span>
+                    <span className="ab-card-value">{c.value}</span>
+                    {c.link && (
+                      <a href={c.link} className="ab-card-link" target={c.link.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+                        {c.linkText} <ArrowRight size={12} />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Right Column - Contact & Info Card */}
-          <div className="relative mt-8 sm:mt-0">
-            {/* Card with Glow Effect */}
-            <div className="relative bg-gradient-to-br from-zinc-900 to-black rounded-2xl sm:rounded-3xl overflow-hidden border border-orange-500/30 shadow-xl sm:shadow-2xl shadow-orange-500/20">
-              
-              {/* Header */}
-              <div className="p-6 sm:p-8 border-b border-zinc-800">
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-black text-xl sm:text-2xl font-bold">CJ</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">Cafe Janoshi</h3>
-                    <p className="text-gray-400 text-sm sm:text-base">Okara's Flavor Hub</p>
-                  </div>
-                </div>
+            {/* Social + price */}
+            <div className="ab-bottom">
+              <div className="ab-social">
+                <a href="https://instagram.com/cafejanoshi" target="_blank" rel="noopener noreferrer" className="ab-social-link">
+                  <Instagram size={16} strokeWidth={1.5} />
+                  <span>@cafejanoshi</span>
+                </a>
+                <a href="https://facebook.com/Janoshi" target="_blank" rel="noopener noreferrer" className="ab-social-link">
+                  <Facebook size={16} strokeWidth={1.5} />
+                  <span>Cafe Janoshi</span>
+                </a>
               </div>
-
-              {/* Contact Info */}
-              <div className="p-6 sm:p-8 space-y-6 sm:space-y-8">
-                {/* Address */}
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Our Location</h4>
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      RC7X+CW4, Tehsil Rd, Waris Colony Aamir Colony, Okara, Punjab
-                    </p>
-                    <button className="mt-2 sm:mt-3 text-orange-400 hover:text-orange-300 font-medium text-sm sm:text-base flex items-center gap-1 sm:gap-2">
-                      <span>View on Map</span>
-                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-1">Contact Number</h4>
-                    <a 
-                      href="tel:03210001112" 
-                      className="text-lg sm:text-xl md:text-2xl font-bold text-white hover:text-orange-400 transition-colors"
-                    >
-                      0321 0001112
-                    </a>
-                    <p className="text-gray-400 text-xs sm:text-sm mt-1">Call for reservations & orders</p>
-                  </div>
-                </div>
-
-                {/* Hours */}
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg sm:rounded-xl flex-shrink-0">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Opening Hours</h4>
-                    <div className="space-y-1 sm:space-y-2">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
-                        <span className="text-gray-300 text-sm sm:text-base">Monday - Sunday</span>
-                        <span className="text-white font-semibold text-sm sm:text-base">10:00 AM - 1:00 AM</span>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400">
-                        Open everyday • Last order at 12:30 AM
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Media */}
-                <div className="pt-4 sm:pt-6 border-t border-zinc-800">
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">Follow Us</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <a 
-                      href="https://instagram.com/cafejanoshi" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="group"
-                    >
-                      <div className="bg-gradient-to-br from-zinc-900 to-black p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-zinc-800 hover:border-pink-500/50 transition-all duration-300 sm:group-hover:scale-105">
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          <div className="p-1.5 sm:p-2 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-lg flex-shrink-0">
-                            <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-pink-400" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="font-bold text-white text-sm sm:text-base truncate">Instagram</div>
-                            <div className="text-gray-400 text-xs sm:text-sm truncate">@cafejanoshi</div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                    
-                    <a 
-                      href="https://facebook.com/Janoshi" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="group"
-                    >
-                      <div className="bg-gradient-to-br from-zinc-900 to-black p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-zinc-800 hover:border-blue-500/50 transition-all duration-300 sm:group-hover:scale-105">
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          <div className="p-1.5 sm:p-2 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg flex-shrink-0">
-                            <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="font-bold text-white text-sm sm:text-base truncate">Facebook</div>
-                            <div className="text-gray-400 text-xs sm:text-sm truncate">1.7K+ followers</div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="p-4 sm:p-6 bg-gradient-to-r from-orange-500/5 to-red-500/5 border-t border-zinc-800">
-                <div className="text-center">
-                  <p className="text-gray-300 text-sm sm:text-base">
-                    Visit us today and experience the taste of Okara!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-orange-500/5 to-transparent rounded-full blur-xl"></div>
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-tl from-yellow-500/5 to-transparent rounded-full blur-xl"></div>
-          </div>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="mt-16 sm:mt-20 md:mt-24">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-orange-500/5 to-red-500/5 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 border border-orange-500/20">
-              <div className="text-center space-y-4 sm:space-y-6">
-                <Heart className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-orange-400 mx-auto" />
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  Our <span className="text-orange-400">Mission</span>
-                </h3>
-                <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed px-2 sm:px-0">
-                  To create unforgettable dining experiences by combining authentic Pakistani flavors with modern culinary artistry, 
-                  while maintaining the warmth and hospitality that our community has cherished for over a decade.
-                </p>
-                <div className="pt-4 sm:pt-6">
-                  <button 
-                    onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-xl sm:rounded-2xl hover:shadow-xl sm:hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105"
-                  >
-                    <span className="text-sm sm:text-base">Explore Our Menu</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                </div>
-              </div>
+              <div className="ab-price">Rs 1,000 – 6,000 per person</div>
             </div>
           </div>
         </div>
+
+        {/* ── Services strip ── */}
+        <div className="ab-services">
+          {[
+            'Private Dining Room',
+            'Good for Kids\' Birthday',
+            'Dine-in Available',
+            'Family Friendly',
+            'Outdoor Seating',
+            'WhatsApp Orders',
+          ].map((s) => (
+            <div key={s} className="ab-service-tag">{s}</div>
+          ))}
+        </div>
+
       </div>
+
+      <style jsx global>{`
+        .ab-container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 600px) { .ab-container { padding: 0 20px; } }
+
+        .ab-label {
+          font-family: var(--font-body);
+          font-size: 0.65rem;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          color: var(--fg-muted);
+          font-weight: 300;
+          margin-bottom: 28px;
+        }
+
+        .ab-headline-row {
+          display: flex;
+          align-items: flex-end;
+          gap: 40px;
+          margin-bottom: 80px;
+          flex-wrap: wrap;
+        }
+        .ab-headline {
+          font-family: var(--font-display);
+          font-size: clamp(2.4rem, 5vw, 4rem);
+          font-weight: 300;
+          color: var(--fg);
+          line-height: 1.1;
+          letter-spacing: 0.01em;
+          flex: 1;
+          min-width: 280px;
+        }
+        .ab-headline em { font-style: italic; }
+        .ab-headline-line {
+          flex: 1;
+          height: 1px;
+          background: var(--border);
+          min-width: 60px;
+          margin-bottom: 12px;
+        }
+
+        /* grid */
+        .ab-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: start;
+          margin-bottom: 80px;
+        }
+        @media (max-width: 900px) {
+          .ab-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
+
+        /* image col */
+        .ab-img-col { position: relative; }
+        .ab-img-main {
+          width: 100%;
+          aspect-ratio: 4/5;
+          overflow: hidden;
+          background: var(--border-light);
+        }
+        .ab-img-main img { transition: transform 0.8s var(--ease-smooth); }
+        .ab-img-main:hover img { transform: scale(1.04); }
+        .ab-img-accent {
+          position: absolute;
+          bottom: -30px; right: -30px;
+          width: 48%;
+          aspect-ratio: 1;
+          overflow: hidden;
+          border: 8px solid var(--bg);
+          background: var(--border-light);
+        }
+        @media (max-width: 600px) {
+          .ab-img-accent { display: none; }
+        }
+        .ab-float-tag {
+          position: absolute;
+          top: 32px; left: -20px;
+          background: var(--fg);
+          color: var(--bg);
+          padding: 18px 22px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          z-index: 2;
+        }
+        .ab-float-num {
+          font-family: var(--font-display);
+          font-size: 2rem;
+          font-weight: 300;
+          line-height: 1;
+          color: var(--accent-light);
+        }
+        .ab-float-txt {
+          font-family: var(--font-body);
+          font-size: 0.62rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: rgba(243,237,226,0.65);
+        }
+
+        /* content col */
+        .ab-content-col { display: flex; flex-direction: column; gap: 0; padding-top: 12px; }
+        .ab-body {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          font-weight: 100;
+          line-height: 1.85;
+          color: var(--fg-light);
+          letter-spacing: 0.03em;
+          margin-bottom: 20px;
+        }
+        .ab-body strong { font-weight: 400; color: var(--fg); }
+
+        /* info cards */
+        .ab-cards { display: flex; flex-direction: column; gap: 0; margin: 28px 0 32px; border-top: 1px solid var(--border-light); }
+        .ab-card {
+          display: flex;
+          gap: 18px;
+          padding: 20px 0;
+          border-bottom: 1px solid var(--border-light);
+          align-items: flex-start;
+        }
+        .ab-card-icon {
+          width: 32px; height: 32px;
+          display: flex; align-items: center; justify-content: center;
+          color: var(--fg-muted);
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+        .ab-card-body { display: flex; flex-direction: column; gap: 3px; }
+        .ab-card-label {
+          font-family: var(--font-body);
+          font-size: 0.62rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--fg-muted);
+          font-weight: 300;
+        }
+        .ab-card-value {
+          font-family: var(--font-body);
+          font-size: 0.9rem;
+          font-weight: 300;
+          color: var(--fg);
+          letter-spacing: 0.03em;
+        }
+        .ab-card-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-family: var(--font-body);
+          font-size: 0.68rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--accent-dark);
+          text-decoration: none;
+          margin-top: 4px;
+          transition: opacity 0.3s;
+        }
+        .ab-card-link:hover { opacity: 0.7; }
+
+        /* social */
+        .ab-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .ab-social { display: flex; gap: 20px; }
+        .ab-social-link {
+          display: flex; align-items: center; gap: 7px;
+          font-family: var(--font-body);
+          font-size: 0.7rem;
+          letter-spacing: 0.1em;
+          color: var(--fg-light);
+          text-decoration: none;
+          font-weight: 300;
+          transition: color 0.3s;
+        }
+        .ab-social-link:hover { color: var(--fg); }
+        .ab-price {
+          font-family: var(--font-body);
+          font-size: 0.68rem;
+          letter-spacing: 0.12em;
+          color: var(--fg-muted);
+          font-weight: 300;
+        }
+
+        /* services strip */
+        .ab-services {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding-top: 16px;
+          border-top: 1px solid var(--border-light);
+        }
+        .ab-service-tag {
+          font-family: var(--font-body);
+          font-size: 0.62rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: var(--fg-muted);
+          padding: 7px 14px;
+          border: 1px solid var(--border);
+          transition: all 0.3s;
+        }
+        .ab-service-tag:hover {
+          border-color: var(--fg-muted);
+          color: var(--fg);
+        }
+      `}</style>
     </section>
   )
 }
-
-export default AboutSection

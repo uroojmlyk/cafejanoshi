@@ -1,843 +1,583 @@
 
 
-// 'use client';
-
-// import { useState, useEffect } from 'react';
-// import { ShoppingCart, X, Phone, MapPin, Menu, Clock, ChevronRight } from 'lucide-react';
-// import Link from 'next/link';
-// import { useCart } from '../context/CartContext';
-
-// const Navbar = () => {
-//   const [isScrolled, setIsScrolled] = useState(false);
-//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-//   const [cartOpen, setCartOpen] = useState(false);
-//   const { cartCount, getCartTotal, getCartItems, clearCart, removeFromCart } = useCart();
-
-//   // Handle scroll effect
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 20);
-//     };
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   // Close cart when clicking outside
-//   useEffect(() => {
-//     const handleClickOutside = (e) => {
-//       if (cartOpen && !e.target.closest('.cart-container') && !e.target.closest('.cart-button')) {
-//         setCartOpen(false);
-//       }
-//       if (mobileMenuOpen && !e.target.closest('.mobile-menu') && !e.target.closest('.menu-button')) {
-//         setMobileMenuOpen(false);
-//       }
-//     };
-//     document.addEventListener('click', handleClickOutside);
-//     return () => document.removeEventListener('click', handleClickOutside);
-//   }, [cartOpen, mobileMenuOpen]);
-
-//   const navLinks = [
-//     { name: 'Home', href: '#', section: 'home' },
-//     { name: 'Menu', href: '#menu', section: 'menu' },
-//     { name: 'About', href: '#about', section: 'about' },
-//     { name: 'Gallery', href: '#gallery', section: 'gallery' },
-//     { name: 'Reservations', href: '#booking', section: 'booking' },
-//     { name: 'Contact', href: '#contact', section: 'contact' },
-//   ];
-
-//   const handleWhatsAppOrder = () => {
-//     const items = getCartItems();
-//     const total = getCartTotal();
-    
-//     let message = `*CAFE JANOSHI ORDER*\n\n`;
-//     message += `*Order Summary:*\n\n`;
-    
-//     items.forEach((item, index) => {
-//       message += `• ${item.name}\n  Quantity: ${item.quantity} x Rs ${item.price}\n  Subtotal: Rs ${item.price * item.quantity}\n\n`;
-//     });
-    
-//     message += `*Total Amount: Rs ${total}*\n\n`;
-//     message += `*Customer Details:*\n`;
-//     message += `Name: _________\n`;
-//     message += `Phone: _________\n`;
-//     message += `Address: _________\n\n`;
-//     message += `Delivery: □ Pickup □ Delivery`;
-    
-//     const encodedMessage = encodeURIComponent(message);
-//     window.open(`https://wa.me/923210001112?text=${encodedMessage}`, '_blank');
-//     setCartOpen(false);
-//   };
-
-//   return (
-//     <>
-//       {/* Top Info Bar */}
-//       <div className="hidden md:block bg-black/95 text-gray-300 text-sm py-2">
-//         <div className="container mx-auto px-6">
-//           <div className="flex justify-between items-center">
-//             <div className="flex items-center space-x-6">
-//               <div className="flex items-center space-x-2">
-//                 <Phone size={14} />
-//                 <a href="tel:03210001112" className="hover:text-amber-400 transition-colors">
-//                   0321 0001112
-//                 </a>
-//               </div>
-//               <div className="flex items-center space-x-2">
-//                 <MapPin size={14} />
-//                 <span className="max-w-xs truncate">RC7X+CW4, Tehsil Rd, Waris Colony, Okara</span>
-//               </div>
-//               <div className="flex items-center space-x-2">
-//                 <Clock size={14} />
-//                 <span>10:00 AM - 12:00 AM</span>
-//               </div>
-//             </div>
-//             <button 
-//               onClick={handleWhatsAppOrder}
-//               className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-1 rounded text-sm font-medium transition-colors"
-//             >
-//               Order via WhatsApp
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Main Navbar */}
-//       <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-//         isScrolled 
-//           ? 'bg-black/95 backdrop-blur-md border-b border-white/10' 
-//           : 'bg-black/90 backdrop-blur-sm'
-//       }`}>
-//         <div className="container mx-auto px-4 md:px-6 py-4">
-//           <div className="flex items-center justify-between">
-            
-//             {/* Logo with Animation */}
-//             <Link href="#" className="flex items-center space-x-3 group">
-//               <div className="relative overflow-hidden">
-//                 {/* Logo Animation Background */}
-//                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
-                
-//                 {/* Logo Text */}
-//                 <div className="relative px-6 py-2">
-//                   <h1 className="text-2xl font-bold text-white tracking-wide">
-//                     <span className="relative z-10">JANOSHI</span>
-//                   </h1>
-//                   <div className="absolute -bottom-1 left-6 right-6 h-0.5 bg-amber-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-//                 </div>
-//               </div>
-//             </Link>
-
-//             {/* Desktop Navigation */}
-//             <div className="hidden md:flex items-center space-x-8">
-//               {navLinks.map((link) => (
-//                 <Link
-//                   key={link.name}
-//                   href={link.href}
-//                   className="text-gray-300 hover:text-amber-400 transition-colors font-medium text-sm tracking-wide relative group"
-//                 >
-//                   {link.name}
-//                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
-//                 </Link>
-//               ))}
-//             </div>
-
-//             {/* Right Section - Cart & Mobile Menu */}
-//             <div className="flex items-center space-x-4">
-              
-//               {/* Cart */}
-//               <div className="relative">
-//                 <button 
-//                   onClick={() => setCartOpen(!cartOpen)}
-//                   className="cart-button relative flex items-center space-x-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg transition-colors group"
-//                 >
-//                   <ShoppingCart className="text-amber-400 group-hover:scale-110 transition-transform" size={20} />
-//                   {cartCount > 0 && (
-//                     <span className="bg-amber-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform group-hover:scale-110 transition-transform">
-//                       {cartCount}
-//                     </span>
-//                   )}
-//                 </button>
-                
-//                 {/* Cart Dropdown */}
-//                 {cartOpen && cartCount > 0 && (
-//                   <div className="cart-container absolute right-0 top-12 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 animate-fadeIn">
-//                     <div className="p-6">
-//                       {/* Header */}
-//                       <div className="flex items-center justify-between mb-6">
-//                         <h3 className="text-lg font-bold text-gray-900">Your Order ({cartCount} items)</h3>
-//                         <button 
-//                           onClick={() => setCartOpen(false)}
-//                           className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100"
-//                         >
-//                           <X size={18} />
-//                         </button>
-//                       </div>
-                      
-//                       {/* Items List */}
-//                       <div className="space-y-4 max-h-72 overflow-y-auto mb-6">
-//                         {getCartItems().map((item) => (
-//                           <div key={item.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-//                             <div className="flex-1">
-//                               <h4 className="font-medium text-gray-900">{item.name}</h4>
-//                               <div className="flex items-center space-x-4 mt-1">
-//                                 <span className="text-sm text-gray-500">Qty: {item.quantity}</span>
-//                                 <span className="text-sm text-gray-500">•</span>
-//                                 <span className="text-sm text-gray-500">Rs {item.price} each</span>
-//                               </div>
-//                             </div>
-//                             <div className="flex items-center space-x-4">
-//                               <span className="font-bold text-gray-900">Rs {item.price * item.quantity}</span>
-//                               <button 
-//                                 onClick={() => removeFromCart(item.id)}
-//                                 className="text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-gray-200"
-//                               >
-//                                 <X size={14} />
-//                               </button>
-//                             </div>
-//                           </div>
-//                         ))}
-//                       </div>
-                      
-//                       {/* Total & Actions */}
-//                       <div className="border-t pt-6">
-//                         <div className="flex justify-between items-center mb-6">
-//                           <span className="text-gray-700 font-medium">Total Amount:</span>
-//                           <span className="text-2xl font-bold text-gray-900">Rs {getCartTotal()}</span>
-//                         </div>
-                        
-//                         <div className="grid grid-cols-2 gap-3">
-//                           <button
-//                             onClick={clearCart}
-//                             className="px-4 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-//                           >
-//                             Clear All
-//                           </button>
-//                           <button
-//                             onClick={handleWhatsAppOrder}
-//                             className="px-4 py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors flex items-center justify-center space-x-2"
-//                           >
-//                             <span>Confirm Order</span>
-//                             <ChevronRight size={16} />
-//                           </button>
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 )}
-//               </div>
-
-//               {/* Mobile Menu Button */}
-//               <button
-//                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-//                 className="menu-button md:hidden bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors"
-//               >
-//                 {mobileMenuOpen ? (
-//                   <X className="text-amber-400" size={24} />
-//                 ) : (
-//                   <Menu className="text-amber-400" size={24} />
-//                 )}
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Mobile Menu */}
-//         {mobileMenuOpen && (
-//           <div className="mobile-menu md:hidden bg-black/95 backdrop-blur-lg border-t border-white/10 animate-slideDown">
-//             <div className="container mx-auto px-4 py-6">
-//               <div className="space-y-1">
-//                 {navLinks.map((link) => (
-//                   <Link
-//                     key={link.name}
-//                     href={link.href}
-//                     className="flex items-center justify-between py-3 px-4 text-gray-300 hover:text-amber-400 hover:bg-white/5 rounded-lg transition-colors font-medium group"
-//                     onClick={() => setMobileMenuOpen(false)}
-//                   >
-//                     <span>{link.name}</span>
-//                     <ChevronRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-//                   </Link>
-//                 ))}
-                
-//                 {/* Mobile Contact Info */}
-//                 <div className="pt-6 mt-6 border-t border-white/10 space-y-4">
-//                   <a 
-//                     href="tel:03210001112" 
-//                     className="flex items-center space-x-3 text-gray-300 hover:text-amber-400 transition-colors py-2"
-//                   >
-//                     <Phone size={18} />
-//                     <span>0321 0001112</span>
-//                   </a>
-                  
-//                   <div className="flex items-start space-x-3 text-gray-300 py-2">
-//                     <MapPin size={18} className="mt-1" />
-//                     <div className="text-sm">
-//                       <div className="font-medium mb-1">Location:</div>
-//                       <div>RC7X+CW4, Tehsil Rd, Waris Colony, Okara</div>
-//                     </div>
-//                   </div>
-                  
-//                   <div className="flex items-center space-x-3 text-gray-300 py-2">
-//                     <Clock size={18} />
-//                     <span>Open: 10:00 AM - 12:00 AM</span>
-//                   </div>
-//                 </div>
-                
-//                 {/* Cart Summary in Mobile */}
-//                 {cartCount > 0 && (
-//                   <div className="pt-6 mt-6 border-t border-white/10">
-//                     <div className="flex justify-between items-center mb-4">
-//                       <span className="text-gray-400">Items in cart:</span>
-//                       <span className="text-amber-400 font-bold">{cartCount}</span>
-//                     </div>
-//                     <div className="flex justify-between items-center mb-6">
-//                       <span className="text-gray-400">Total:</span>
-//                       <span className="text-xl font-bold text-white">Rs {getCartTotal()}</span>
-//                     </div>
-//                     <div className="grid grid-cols-2 gap-3">
-//                       <button
-//                         onClick={clearCart}
-//                         className="px-4 py-3 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors"
-//                       >
-//                         Clear Cart
-//                       </button>
-//                       <button
-//                         onClick={handleWhatsAppOrder}
-//                         className="px-4 py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors flex items-center justify-center space-x-2"
-//                       >
-//                         <span>Order Now</span>
-//                         <ChevronRight size={16} />
-//                       </button>
-//                     </div>
-//                   </div>
-//                 )}
-//               </div>
-//             </div>
-//           </div>
-//         )}
-//       </nav>
-
-//       {/* Empty Cart Notification */}
-//       {cartOpen && cartCount === 0 && (
-//         <div className="cart-container absolute right-4 top-20 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 animate-fadeIn">
-//           <div className="p-6 text-center">
-//             <ShoppingCart className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-//             <h3 className="text-lg font-bold text-gray-900 mb-2">Your cart is empty</h3>
-//             <p className="text-gray-500 mb-6">Add items from our menu to get started</p>
-//             <button
-//               onClick={() => {
-//                 setCartOpen(false);
-//                 document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
-//               }}
-//               className="w-full px-4 py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors"
-//             >
-//               Browse Menu
-//             </button>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* CSS Animations */}
-//       <style jsx global>{`
-//         @keyframes fadeIn {
-//           from {
-//             opacity: 0;
-//             transform: translateY(-10px);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateY(0);
-//           }
-//         }
-        
-//         @keyframes slideDown {
-//           from {
-//             opacity: 0;
-//             transform: translateY(-20px);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateY(0);
-//           }
-//         }
-        
-//         .animate-fadeIn {
-//           animation: fadeIn 0.3s ease-out;
-//         }
-        
-//         .animate-slideDown {
-//           animation: slideDown 0.3s ease-out;
-//         }
-//       `}</style>
-//     </>
-//   );
-// };
-
-// export default Navbar;  
-
-
-
-
-
-
-
-
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ShoppingCart, X, Phone, MapPin, Menu, Clock, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import { ShoppingCart, X, ChevronRight, Minus, Plus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
-  const { cartCount, getCartTotal, getCartItems, clearCart, removeFromCart } = useCart();
+const LINKS = [
+  { label: 'Menu',         href: '#menu' },
+  { label: 'Experience',   href: '#experience' },
+  { label: 'Gallery',      href: '#ambiance' },
+  { label: 'Our Story',    href: '#story' },
+  { label: 'Contact',      href: '#reservation' },
+];
 
-  // Handle scroll effect
+const go = (href) => {
+  if (!href || href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+};
+
+export default function Navbar() {
+  const [scrolled,   setScrolled]   = useState(false);
+  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [cartOpen,   setCartOpen]   = useState(false);
+  const cartRef = useRef(null);
+
+  const { cartCount, getCartTotal, getCartItems, clearCart, removeFromCart, updateQuantity } = useCart();
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const fn = () => setScrolled(window.scrollY > 80);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Close cart when clicking outside
+  // Close cart on outside click
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (cartOpen && !e.target.closest('.cart-container') && !e.target.closest('.cart-button')) {
-        setCartOpen(false);
-      }
-      if (mobileMenuOpen && !e.target.closest('.mobile-menu') && !e.target.closest('.menu-button')) {
-        setMobileMenuOpen(false);
-      }
+    const fn = (e) => {
+      if (cartOpen && cartRef.current && !cartRef.current.contains(e.target)) setCartOpen(false);
     };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [cartOpen, mobileMenuOpen]);
+    document.addEventListener('mousedown', fn);
+    return () => document.removeEventListener('mousedown', fn);
+  }, [cartOpen]);
 
-  const navLinks = [
-    { name: 'Home', href: '#', section: 'home' },
-    { name: 'Menu', href: '#menu', section: 'menu' },
-    { name: 'About', href: '#about', section: 'about' },
-    { name: 'Gallery', href: '#gallery', section: 'gallery' },
-    { name: 'Reservations', href: '#booking', section: 'booking' },
-    { name: 'Contact', href: '#contact', section: 'contact' },
-  ];
+  // Lock body when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
-  const handleWhatsAppOrder = () => {
+  const orderViaWhatsApp = () => {
     const items = getCartItems();
+    if (!items.length) return;
     const total = getCartTotal();
-    
-    let message = `*CAFE JANOSHI ORDER*\n\n`;
-    message += `*Order Summary:*\n\n`;
-    
-    items.forEach((item, index) => {
-      message += `• ${item.name}\n  Quantity: ${item.quantity} x Rs ${item.price}\n  Subtotal: Rs ${item.price * item.quantity}\n\n`;
+    let msg = `*CAFE JANOSHI — ORDER*\n\n`;
+    items.forEach(i => {
+      msg += `• ${i.name}  ×${i.quantity}  Rs ${i.price * i.quantity}\n`;
     });
-    
-    message += `*Total Amount: Rs ${total}*\n\n`;
-    message += `*Customer Details:*\n`;
-    message += `Name: _________\n`;
-    message += `Phone: _________\n`;
-    message += `Address: _________\n\n`;
-    message += `Delivery: □ Pickup □ Delivery`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/923210001112?text=${encodedMessage}`, '_blank');
+    msg += `\n*Total: Rs ${total}*\n\nName:\nPhone:\nAddress:`;
+    window.open(`https://wa.me/923210001112?text=${encodeURIComponent(msg)}`, '_blank');
     setCartOpen(false);
   };
 
   return (
     <>
-      {/* Top Info Bar */}
-      <div className="hidden md:block bg-black/95 text-gray-300 text-sm py-2 px-3 sm:px-4 md:px-6">
-        <div className="container mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 md:gap-6">
-              <div className="flex items-center space-x-1 sm:space-x-2">
-                <Phone size={12} className="sm:size-[14px]" />
-                <a href="tel:03210001112" className="hover:text-amber-400 transition-colors text-xs sm:text-sm">
-                  0321 0001112
-                </a>
-              </div>
-              <div className="flex items-center space-x-1 sm:space-x-2">
-                <MapPin size={12} className="sm:size-[14px]" />
-                <span className="max-w-[180px] sm:max-w-xs truncate text-xs sm:text-sm">RC7X+CW4, Tehsil Rd, Okara</span>
-              </div>
-              <div className="flex items-center space-x-1 sm:space-x-2">
-                <Clock size={12} className="sm:size-[14px]" />
-                <span className="text-xs sm:text-sm">10:00 AM - 12:00 AM</span>
-              </div>
-            </div>
-            <button 
-              onClick={handleWhatsAppOrder}
-              className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-xs sm:text-sm font-medium transition-colors whitespace-nowrap"
-            >
-              Order via WhatsApp
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* ═══ NAVBAR ═══ */}
+      <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+        <div className="nav-inner wrap">
 
-      {/* Main Navbar */}
-      <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-black/95 backdrop-blur-md border-b border-white/10' 
-          : 'bg-black/90 backdrop-blur-sm'
-      }`}>
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            
-            {/* Logo with Enhanced Animations */}
-            <Link 
-              href="#" 
-              className="flex items-center space-x-2 sm:space-x-3 group relative"
-              onMouseEnter={() => setIsLogoHovered(true)}
-              onMouseLeave={() => setIsLogoHovered(false)}
-              onClick={() => setIsLogoHovered(!isLogoHovered)}
-            >
-              {/* Animated Background Glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              
-              {/* Logo Container */}
-              <div className="relative px-4 sm:px-6 py-1.5 sm:py-2 overflow-hidden rounded-lg">
-                {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-500 ${
-                  isLogoHovered ? 'translate-x-0' : '-translate-x-full'
-                }`}></div>
-                
-                {/* Glitter Particles */}
-                {isLogoHovered && (
-                  <>
-                    <div className="absolute top-1 left-4 w-1 h-1 bg-white rounded-full animate-sparkle"></div>
-                    <div className="absolute top-3 right-3 w-1 h-1 bg-white rounded-full animate-sparkle animation-delay-200"></div>
-                    <div className="absolute bottom-2 left-6 w-1 h-1 bg-white rounded-full animate-sparkle animation-delay-400"></div>
-                  </>
-                )}
-                
-                {/* Logo Text with Gradient Animation */}
-                <h1 className="relative text-xl sm:text-2xl font-bold tracking-wide">
-                  <span className="relative z-10 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 bg-clip-text text-transparent animate-gradient">
-                    JANOSHI
-                  </span>
-                </h1>
-                
-                {/* Animated Underline */}
-                <div className={`absolute -bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transform transition-all duration-500 ${
-                  isLogoHovered ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'
-                }`}></div>
-              </div>
+          {/* Logo */}
+          <button className="nav-logo" onClick={() => go('#')}>
+            <span className="nav-logo-word">JANOSHI</span>
+            <span className="nav-logo-sub">Cafe · Okara</span>
+          </button>
 
-              {/* Tagline (Hidden on mobile) */}
-              <span className="hidden lg:block text-xs text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ml-2 whitespace-nowrap">
-                Okara's Finest Dining
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-300 hover:text-amber-400 transition-colors font-medium text-sm tracking-wide relative group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              ))}
-            </div>
-
-            {/* Right Section - Cart & Mobile Menu */}
-            <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-              
-              {/* Cart */}
-              <div className="relative">
-                <button 
-                  onClick={() => setCartOpen(!cartOpen)}
-                  className="cart-button relative flex items-center space-x-1 sm:space-x-2 bg-white/10 hover:bg-white/20 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-all duration-300 group active:scale-95"
-                >
-                  <ShoppingCart className="text-amber-400 group-hover:scale-110 transition-transform duration-300" size={18} className="sm:size-[20px]" />
-                  {cartCount > 0 && (
-                    <span className="bg-amber-500 text-white text-[10px] sm:text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                      {cartCount}
-                    </span>
-                  )}
+          {/* Desktop links — centred */}
+          <ul className="nav-links">
+            {LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <button className="nav-link" onClick={() => go(href)}>
+                  {label}
                 </button>
-                
-                {/* Cart Dropdown */}
-                {cartOpen && cartCount > 0 && (
-                  <div className="cart-container absolute right-0 top-10 sm:top-12 w-80 sm:w-96 bg-white rounded-lg shadow-2xl border border-gray-200 animate-fadeIn z-50">
-                    <div className="p-4 sm:p-6">
-                      {/* Header */}
-                      <div className="flex items-center justify-between mb-4 sm:mb-6">
-                        <h3 className="text-base sm:text-lg font-bold text-gray-900">Your Order ({cartCount} items)</h3>
-                        <button 
-                          onClick={() => setCartOpen(false)}
-                          className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100"
-                        >
-                          <X size={16} className="sm:size-[18px]" />
-                        </button>
-                      </div>
-                      
-                      {/* Items List */}
-                      <div className="space-y-3 sm:space-y-4 max-h-48 sm:max-h-72 overflow-y-auto mb-4 sm:mb-6 pr-2">
-                        {getCartItems().map((item) => (
-                          <div key={item.id} className="flex items-center justify-between p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-medium text-gray-900 text-sm sm:text-base truncate">{item.name}</h4>
-                              <div className="flex items-center space-x-2 sm:space-x-4 mt-1">
-                                <span className="text-xs sm:text-sm text-gray-500">Qty: {item.quantity}</span>
-                                <span className="text-xs sm:text-sm text-gray-500 hidden sm:inline">•</span>
-                                <span className="text-xs sm:text-sm text-gray-500">Rs {item.price} each</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right actions */}
+          <div className="nav-actions">
+            {/* Cart */}
+            <div className="cart-wrap" ref={cartRef}>
+              <button
+                className="cart-trigger"
+                onClick={() => setCartOpen(v => !v)}
+                aria-label="Cart"
+              >
+                <ShoppingCart size={17} strokeWidth={1.5} />
+                {cartCount > 0 && <span className="cart-dot">{cartCount}</span>}
+              </button>
+
+              {/* Cart Panel */}
+              {cartOpen && (
+                <div className="cart-panel">
+                  <div className="cart-head">
+                    <span className="cart-head-title">Your Order</span>
+                    <button onClick={() => setCartOpen(false)} className="cart-close">
+                      <X size={15} />
+                    </button>
+                  </div>
+
+                  {cartCount === 0 ? (
+                    <div className="cart-empty">
+                      <ShoppingCart size={28} strokeWidth={1} />
+                      <p>Nothing here yet</p>
+                      <button className="cart-browse" onClick={() => { setCartOpen(false); go('#menu'); }}>
+                        Browse Menu
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="cart-items">
+                        {getCartItems().map(item => (
+                          <div key={item.id} className="cart-row">
+                            <div className="cart-row-info">
+                              <span className="cart-row-name">{item.name}</span>
+                              <div className="cart-qty-row">
+                                <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="cart-qty-btn"><Minus size={10} /></button>
+                                <span className="cart-qty-num">{item.quantity}</span>
+                                <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="cart-qty-btn"><Plus size={10} /></button>
                               </div>
                             </div>
-                            <div className="flex items-center space-x-2 sm:space-x-4 ml-2">
-                              <span className="font-bold text-gray-900 text-sm sm:text-base whitespace-nowrap">Rs {item.price * item.quantity}</span>
-                              <button 
-                                onClick={() => removeFromCart(item.id)}
-                                className="text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-gray-200"
-                              >
-                                <X size={12} className="sm:size-[14px]" />
-                              </button>
+                            <div className="cart-row-right">
+                              <span className="cart-row-price">Rs {item.price * item.quantity}</span>
+                              <button onClick={() => removeFromCart(item.id)} className="cart-del"><X size={11} /></button>
                             </div>
                           </div>
                         ))}
                       </div>
-                      
-                      {/* Total & Actions */}
-                      <div className="border-t pt-4 sm:pt-6">
-                        <div className="flex justify-between items-center mb-4 sm:mb-6">
-                          <span className="text-gray-700 font-medium text-sm sm:text-base">Total Amount:</span>
-                          <span className="text-xl sm:text-2xl font-bold text-gray-900">Rs {getCartTotal()}</span>
+                      <div className="cart-foot">
+                        <div className="cart-total">
+                          <span>Total</span>
+                          <span>Rs {getCartTotal()}</span>
                         </div>
-                        
-                        <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                          <button
-                            onClick={clearCart}
-                            className="px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors text-sm sm:text-base"
-                          >
-                            Clear All
-                          </button>
-                          <button
-                            onClick={handleWhatsAppOrder}
-                            className="px-3 sm:px-4 py-2 sm:py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base"
-                          >
-                            <span>Confirm</span>
-                            <ChevronRight size={14} className="sm:size-[16px]" />
-                          </button>
-                        </div>
+                        <button onClick={orderViaWhatsApp} className="cart-order-btn">
+                          <span>Order via WhatsApp</span>
+                          <ChevronRight size={13} />
+                        </button>
+                        <button onClick={clearCart} className="cart-clear">Clear order</button>
                       </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="menu-button md:hidden bg-white/10 hover:bg-white/20 p-1.5 sm:p-2 rounded-lg transition-colors active:scale-95"
-              >
-                {mobileMenuOpen ? (
-                  <X className="text-amber-400" size={20} className="sm:size-[24px]" />
-                ) : (
-                  <Menu className="text-amber-400" size={20} className="sm:size-[24px]" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="mobile-menu md:hidden bg-black/95 backdrop-blur-lg border-t border-white/10 animate-slideDown">
-            <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
-              <div className="space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-4 text-gray-300 hover:text-amber-400 hover:bg-white/5 rounded-lg transition-colors font-medium text-sm sm:text-base group"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span>{link.name}</span>
-                    <ChevronRight size={14} className="sm:size-[16px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
-                ))}
-                
-                {/* Mobile Contact Info */}
-                <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/10 space-y-3 sm:space-y-4">
-                  <a 
-                    href="tel:03210001112" 
-                    className="flex items-center space-x-2 sm:space-x-3 text-gray-300 hover:text-amber-400 transition-colors py-1.5 sm:py-2 text-sm sm:text-base"
-                  >
-                    <Phone size={16} className="sm:size-[18px]" />
-                    <span>0321 0001112</span>
-                  </a>
-                  
-                  <div className="flex items-start space-x-2 sm:space-x-3 text-gray-300 py-1.5 sm:py-2">
-                    <MapPin size={16} className="sm:size-[18px] mt-0.5 sm:mt-1" />
-                    <div className="text-xs sm:text-sm">
-                      <div className="font-medium mb-0.5 sm:mb-1">Location:</div>
-                      <div>RC7X+CW4, Tehsil Rd, Okara</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 sm:space-x-3 text-gray-300 py-1.5 sm:py-2 text-sm sm:text-base">
-                    <Clock size={16} className="sm:size-[18px]" />
-                    <span>10:00 AM - 12:00 AM</span>
-                  </div>
+                    </>
+                  )}
                 </div>
-                
-                {/* Cart Summary in Mobile */}
-                {cartCount > 0 && (
-                  <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/10">
-                    <div className="flex justify-between items-center mb-3 sm:mb-4">
-                      <span className="text-gray-400 text-sm sm:text-base">Items in cart:</span>
-                      <span className="text-amber-400 font-bold text-sm sm:text-base">{cartCount}</span>
-                    </div>
-                    <div className="flex justify-between items-center mb-4 sm:mb-6">
-                      <span className="text-gray-400 text-sm sm:text-base">Total:</span>
-                      <span className="text-lg sm:text-xl font-bold text-white">Rs {getCartTotal()}</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                      <button
-                        onClick={clearCart}
-                        className="px-3 sm:px-4 py-2 sm:py-3 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors text-sm sm:text-base"
-                      >
-                        Clear Cart
-                      </button>
-                      <button
-                        onClick={handleWhatsAppOrder}
-                        className="px-3 sm:px-4 py-2 sm:py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors flex items-center justify-center space-x-1 sm:space-x-2 text-sm sm:text-base"
-                      >
-                        <span>Order Now</span>
-                        <ChevronRight size={14} className="sm:size-[16px]" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+              )}
             </div>
-          </div>
-        )}
-      </nav>
 
-      {/* Empty Cart Notification */}
-      {cartOpen && cartCount === 0 && (
-        <div className="cart-container absolute right-2 sm:right-4 top-16 sm:top-20 w-72 sm:w-80 bg-white rounded-lg shadow-2xl border border-gray-200 animate-fadeIn z-50">
-          <div className="p-4 sm:p-6 text-center">
-            <ShoppingCart className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3 sm:mb-4" />
-            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">Your cart is empty</h3>
-            <p className="text-gray-500 text-sm mb-4 sm:mb-6">Add items from our menu to get started</p>
+            {/* Reserve CTA */}
+            <button className="nav-reserve" onClick={() => go('#reservation')}>
+              Reserve a Table
+            </button>
+
+            {/* Hamburger */}
             <button
-              onClick={() => {
-                setCartOpen(false);
-                document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full px-4 py-2.5 sm:py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 transition-colors text-sm sm:text-base"
+              className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
+              onClick={() => setMenuOpen(v => !v)}
+              aria-label="Menu"
             >
-              Browse Menu
+              <span /><span /><span />
             </button>
           </div>
         </div>
-      )}
+      </nav>
 
-      {/* CSS Animations */}
+      {/* ═══ MOBILE FULLSCREEN MENU ═══ */}
+      <div className={`mob-menu${menuOpen ? ' mob-menu--open' : ''}`}>
+        <div className="mob-inner">
+          <nav className="mob-links">
+            {LINKS.map(({ label, href }, i) => (
+              <button
+                key={label}
+                className="mob-link"
+                style={{ transitionDelay: menuOpen ? `${i * 55 + 80}ms` : '0ms' }}
+                onClick={() => { setMenuOpen(false); setTimeout(() => go(href), 350); }}
+              >
+                <span>{label}</span>
+                <ChevronRight size={16} strokeWidth={1} />
+              </button>
+            ))}
+          </nav>
+          <div className="mob-meta">
+            <a href="tel:03210001112">0321 000 1112</a>
+            <span>Tehsil Rd, Waris Colony, Okara</span>
+            <span>Open daily · until 12:59 am</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══ STYLES ═══ */}
       <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+
+        /* ── Nav shell ── */
+        .nav {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 200;
+          height: 72px;
+          transition: background .6s var(--ease), box-shadow .6s var(--ease), backdrop-filter .6s var(--ease);
         }
-        
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        .nav--scrolled {
+          background: rgba(243,237,226,0.97);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          box-shadow: 0 1px 0 var(--rule);
+        }
+        .nav-inner {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
         }
 
-        @keyframes sparkle {
-          0%, 100% {
-            opacity: 0;
-            transform: scale(0);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1);
-          }
+        /* ── Logo ── */
+        .nav-logo {
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+        .nav-logo-word {
+          font-family: var(--serif);
+          font-size: 1.6rem;
+          font-weight: 300;
+          letter-spacing: .2em;
+          color: var(--cream);
+          line-height: 1;
+          transition: color .5s var(--ease);
+        }
+        .nav--scrolled .nav-logo-word { color: var(--ink); }
+        .nav-logo-sub {
+          font-family: var(--sans);
+          font-size: .5rem;
+          font-weight: 300;
+          letter-spacing: .28em;
+          text-transform: uppercase;
+          color: rgba(243,237,226,.5);
+          transition: color .5s var(--ease);
+        }
+        .nav--scrolled .nav-logo-sub { color: var(--ink-3); }
+
+        /* ── Links ── */
+        .nav-links {
+          display: flex;
+          list-style: none;
+          gap: 36px;
+          flex: 1;
+          justify-content: center;
+        }
+        .nav-link {
+          font-family: var(--sans);
+          font-size: .68rem;
+          font-weight: 300;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: rgba(243,237,226,.75);
+          background: none;
+          border: none;
+          position: relative;
+          padding-bottom: 3px;
+          transition: color .35s var(--ease);
+          cursor: pointer;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0; left: 0;
+          width: 0; height: 1px;
+          background: currentColor;
+          transition: width .4s var(--ease);
+        }
+        .nav-link:hover { color: rgba(243,237,226,1); }
+        .nav-link:hover::after { width: 100%; }
+        .nav--scrolled .nav-link { color: var(--ink-2); }
+        .nav--scrolled .nav-link:hover { color: var(--ink); }
+
+        /* ── Actions ── */
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          flex-shrink: 0;
         }
 
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+        /* ── Cart trigger ── */
+        .cart-wrap { position: relative; }
+        .cart-trigger {
+          position: relative;
+          display: flex;
+          align-items: center;
+          color: rgba(243,237,226,.8);
+          background: none;
+          border: none;
+          padding: 6px;
+          transition: color .3s;
+          cursor: pointer;
         }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out;
-        }
-
-        .animate-sparkle {
-          animation: sparkle 1s ease-in-out;
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 3s ease infinite;
-        }
-
-        .animation-delay-200 {
-          animation-delay: 0.2s;
+        .nav--scrolled .cart-trigger { color: var(--ink-2); }
+        .cart-trigger:hover { color: var(--cream); }
+        .nav--scrolled .cart-trigger:hover { color: var(--ink); }
+        .cart-dot {
+          position: absolute;
+          top: 0; right: 0;
+          width: 16px; height: 16px;
+          border-radius: 50%;
+          background: var(--gold);
+          color: var(--cream);
+          font-size: .55rem;
+          font-weight: 700;
+          display: flex; align-items: center; justify-content: center;
+          letter-spacing: 0;
         }
 
-        .animation-delay-400 {
-          animation-delay: 0.4s;
+        /* ── Cart panel ── */
+        .cart-panel {
+          position: absolute;
+          top: calc(100% + 16px);
+          right: 0;
+          width: 330px;
+          background: var(--cream);
+          border: 1px solid var(--rule);
+          box-shadow: 0 24px 64px rgba(30,26,23,.15);
+          animation: panelIn .35s var(--ease-out);
+          z-index: 300;
         }
+        @keyframes panelIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .cart-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 18px 20px 14px;
+          border-bottom: 1px solid var(--rule-lt);
+        }
+        .cart-head-title {
+          font-family: var(--serif);
+          font-size: 1.15rem;
+          font-weight: 300;
+          letter-spacing: .05em;
+          color: var(--ink);
+        }
+        .cart-close {
+          color: var(--ink-3);
+          padding: 4px;
+          transition: color .3s;
+          display: flex;
+        }
+        .cart-close:hover { color: var(--ink); }
+        .cart-empty {
+          padding: 44px 20px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          color: var(--ink-3);
+        }
+        .cart-empty p { font-size: .78rem; letter-spacing: .08em; color: var(--ink-3); font-weight: 300; }
+        .cart-browse {
+          font-family: var(--sans);
+          font-size: .62rem;
+          letter-spacing: .16em;
+          text-transform: uppercase;
+          border: 1px solid var(--rule);
+          color: var(--ink-2);
+          padding: 8px 18px;
+          margin-top: 4px;
+          transition: all .3s;
+        }
+        .cart-browse:hover { border-color: var(--ink); color: var(--ink); }
+        .cart-items { max-height: 220px; overflow-y: auto; }
+        .cart-items::-webkit-scrollbar { width: 2px; }
+        .cart-items::-webkit-scrollbar-thumb { background: var(--rule); }
+        .cart-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 20px;
+          border-bottom: 1px solid var(--rule-lt);
+          gap: 10px;
+        }
+        .cart-row:last-child { border-bottom: none; }
+        .cart-row-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+        .cart-row-name {
+          font-family: var(--sans);
+          font-size: .78rem;
+          font-weight: 300;
+          color: var(--ink);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          letter-spacing: .03em;
+        }
+        .cart-qty-row { display: flex; align-items: center; gap: 8px; }
+        .cart-qty-btn {
+          width: 20px; height: 20px;
+          border: 1px solid var(--rule);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--ink-2);
+          transition: all .25s;
+        }
+        .cart-qty-btn:hover { border-color: var(--ink); color: var(--ink); }
+        .cart-qty-num { font-size: .78rem; font-weight: 300; color: var(--ink); min-width: 14px; text-align: center; }
+        .cart-row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .cart-row-price { font-size: .8rem; font-weight: 300; color: var(--ink); letter-spacing: .03em; }
+        .cart-del { color: var(--ink-3); padding: 2px; transition: color .25s; display: flex; }
+        .cart-del:hover { color: var(--ink); }
+        .cart-foot { padding: 14px 20px 18px; border-top: 1px solid var(--rule-lt); }
+        .cart-total {
+          display: flex;
+          justify-content: space-between;
+          font-family: var(--sans);
+          font-size: .7rem;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: var(--ink);
+          font-weight: 300;
+          margin-bottom: 12px;
+        }
+        .cart-order-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          font-family: var(--sans);
+          font-size: .64rem;
+          letter-spacing: .2em;
+          text-transform: uppercase;
+          font-weight: 300;
+          background: var(--ink);
+          color: var(--cream);
+          padding: 13px;
+          border: 1px solid var(--ink);
+          transition: background .35s var(--ease);
+          margin-bottom: 8px;
+        }
+        .cart-order-btn:hover { background: var(--gold-dk); border-color: var(--gold-dk); }
+        .cart-clear {
+          width: 100%;
+          font-family: var(--sans);
+          font-size: .6rem;
+          letter-spacing: .16em;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: var(--ink-3);
+          padding: 6px;
+          text-align: center;
+          transition: color .3s;
+          border: none;
+          background: none;
+        }
+        .cart-clear:hover { color: var(--ink); }
 
-        /* Hide scrollbar for cart items */
-        .overflow-y-auto::-webkit-scrollbar {
-          width: 4px;
+        /* ── Reserve button ── */
+        .nav-reserve {
+          font-family: var(--sans);
+          font-size: .62rem;
+          letter-spacing: .22em;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: var(--cream);
+          border: 1px solid rgba(243,237,226,.45);
+          padding: 9px 20px;
+          background: none;
+          transition: all .4s var(--ease);
+          white-space: nowrap;
+          display: none;
         }
-        
-        .overflow-y-auto::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 4px;
+        .nav-reserve:hover {
+          background: rgba(243,237,226,.12);
+          border-color: rgba(243,237,226,.8);
         }
-        
-        .overflow-y-auto::-webkit-scrollbar-thumb {
-          background: #f59e0b;
-          border-radius: 4px;
+        .nav--scrolled .nav-reserve {
+          color: var(--ink);
+          border-color: var(--ink);
         }
-        
-        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-          background: #d97706;
+        .nav--scrolled .nav-reserve:hover {
+          background: var(--ink);
+          color: var(--cream);
         }
+        @media (min-width: 768px) { .nav-reserve { display: block; } }
+
+        /* ── Hamburger ── */
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          padding: 4px;
+        }
+        .hamburger span {
+          display: block;
+          width: 22px;
+          height: 1px;
+          background: rgba(243,237,226,.85);
+          transition: transform .4s var(--ease), opacity .4s, background .5s var(--ease);
+          transform-origin: center;
+        }
+        .nav--scrolled .hamburger span { background: var(--ink); }
+        .hamburger--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        @media (min-width: 768px) {
+          .hamburger { display: none; }
+          .nav-links  { display: flex; }
+        }
+        @media (max-width: 767px) { .nav-links { display: none; } }
+
+        /* ── Mobile fullscreen menu ── */
+        .mob-menu {
+          position: fixed;
+          inset: 0;
+          z-index: 199;
+          background: var(--cream);
+          display: flex;
+          flex-direction: column;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity .45s var(--ease);
+        }
+        .mob-menu--open { opacity: 1; pointer-events: auto; }
+        .mob-inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 48px;
+          padding: 100px 32px 60px;
+          height: 100%;
+        }
+        .mob-links { display: flex; flex-direction: column; }
+        .mob-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: var(--serif);
+          font-size: clamp(2rem, 8vw, 3rem);
+          font-weight: 300;
+          color: var(--ink);
+          letter-spacing: .02em;
+          padding: 14px 0;
+          border-bottom: 1px solid var(--rule-lt);
+          opacity: 0;
+          transform: translateX(-24px);
+          transition: opacity .55s var(--ease-out), transform .55s var(--ease-out), color .3s;
+          background: none;
+          border-left: none;
+          border-right: none;
+          border-top: none;
+          text-align: left;
+          cursor: pointer;
+        }
+        .mob-menu--open .mob-link { opacity: 1; transform: none; }
+        .mob-link:hover { color: var(--gold-dk); }
+        .mob-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-family: var(--sans);
+          font-size: .65rem;
+          letter-spacing: .16em;
+          text-transform: uppercase;
+          color: var(--ink-3);
+          font-weight: 300;
+        }
+        .mob-meta a { color: var(--ink-2); transition: color .3s; }
+        .mob-meta a:hover { color: var(--ink); }
       `}</style>
     </>
   );
-};
-
-export default Navbar;
+}

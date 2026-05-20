@@ -1,26 +1,209 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
+
+/* ══════════════════════════════════════════════
+   CAFE JANOSHI  ·  Design System v3
+   Based on Mila Miami — mila-miami.com
+   ══════════════════════════════════════════════ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Palette (Mila Miami exact) ── */
+  --cream:        #f3ede2;
+  --cream-2:      #ede7db;
+  --charcoal:     #1e1a17;
+  --charcoal-2:   #2c2724;
+  --ink:          #3a363a;
+  --ink-2:        #5a5658;   /* darker than before — readable */
+  --ink-3:        #8a8786;
+  --gold:         #c9a96e;
+  --gold-dk:      #9e7a3f;
+  --gold-lt:      #e8d5b0;
+  --border:       rgba(58,54,58,0.14);
+  --border-lt:    rgba(58,54,58,0.07);
+
+  /* ── Fonts ── */
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Lato', system-ui, -apple-system, sans-serif;
+
+  /* ── Motion ── */
+  --ease:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ── Body — VISIBLE weights ── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream) !important;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 500;          /* NOT 100 — readable */
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
+
+/* ── Headings — Cormorant Garamond ── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--serif);
+  font-weight: 500;          /* 400 = visible, elegant */
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+h1 { font-size: clamp(3.2rem, 8vw, 8rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 4rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2.1rem); }
+h4 {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ── Paragraph — readable weight ── */
+p {
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+}
+
+a  { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+
+/* ── Layout wrapper ── */
+.wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+@media (max-width: 1024px) { .wrap { padding: 0 36px; } }
+@media (max-width: 640px)  { .wrap { padding: 0 20px; } }
+
+/* ── Section base padding ── */
+.sec { padding: 130px 0; }
+@media (max-width: 768px) { .sec { padding: 80px 0; } }
+section { scroll-margin-top: 72px; }
+
+/* ── Eyebrow label (Mila style) ── */
+.eyebrow {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 22px;
+}
+.eyebrow-lt { color: rgba(243,237,226,0.45); }
+
+/* ── Thin rule ── */
+.rule { height: 1px; background: var(--border); }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+.reveal.on { opacity: 1; transform: none; }
+
+.reveal-l {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.95s var(--ease-out), transform 0.95s var(--ease-out);
+}
+.reveal-l.on { opacity: 1; transform: none; }
+
+.reveal-r {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.95s var(--ease-out), transform 0.95s var(--ease-out);
+}
+.reveal-r.on { opacity: 1; transform: none; }
+
+/* ── Shared button base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.4s var(--ease);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+  z-index: 0;
+}
+.btn:hover::after { transform: scaleX(1); }
+.btn > * { position: relative; z-index: 1; }
+
+/* Light outline — for dark bg */
+.btn-ol {
+  color: rgba(243,237,226,0.88);
+  border-color: rgba(243,237,226,0.4);
+}
+.btn-ol::after { background: rgba(243,237,226,0.12); }
+.btn-ol:hover  { color: rgba(243,237,226,0.95); }
+
+/* Light solid — for dark bg */
+.btn-sl {
+  color: var(--ink);
+  background: rgba(243,237,226,0.95);
+  border-color: rgba(243,237,226,0.95);
+}
+.btn-sl::after { background: var(--charcoal); }
+.btn-sl:hover  { color: var(--cream); }
+
+/* Dark outline — for light bg */
+.btn-od {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-od::after { background: var(--ink); }
+.btn-od:hover  { color: var(--cream); }
+
+/* Dark solid — for light bg */
+.btn-sd {
+  color: var(--cream);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btn-sd::after { background: var(--gold-dk); }
+.btn-sd:hover  { color: var(--cream); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+::selection { background: var(--gold-lt); color: var(--ink); }
+
+/* ── Lenis smooth scroll ── */
+html.lenis           { height: auto; }
+.lenis.lenis-smooth  { scroll-behavior: auto; }
+.lenis.lenis-stopped { overflow: hidden; } */
